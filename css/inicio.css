@@ -1,0 +1,47 @@
+* {
+  font-family: 'IBM Plex Sans', Nunito, Roboto, Helvetica, 'sans serif';
+  font-size: 16px;
+  letter-spacing: 0.3px;
+  line-height: 1.5rem;
+}
+
+body {
+  width: 90%;
+  margin: 10px auto;
+}
+
+h1 {
+  font-size: 130%;
+  color: #1C1756;
+}
+
+h2 {
+  color: #D53411;
+  margin: 3px;
+  font-size: 110%
+}
+
+p {
+  margin: 0px;
+}
+
+.ojo {
+  background-color: yellow
+}
+
+.pink {
+  color: pink
+}
+
+.gris {
+  background-color: #1C1756;
+  color: white;
+  line-height: 1.5em;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-left: 10px;
+}
+
+.margen-sup {
+  margin-top: 10px;
+}
