@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin-left: 5em;
+      margin-right: 5em;
+      font-family: 'Inclusive Sans', system-ui, -apple-system, sans-serif;
+      line-height: 1.4rem;
+    }
+
+    summary {
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+
+    .rojo {
+      color: #e03e2d; 
+    }
+
+    button,
+    h2 {
+      font-size: 1.3em;
+    }
+
+    .check {
+      font-size: 2em;
+    }
+    code {
+      font-size: 0.9em;
+      color: blue;
+      background-color: rgb(219, 219, 219);
+      padding-inline: 0.5em;
+      border-radius: 10px;
+    }
+    a {
+      text-decoration: none;
+      border-bottom: 0.25px solid blue;
+    }
+  </style>
+  <title>chinook-bbdd. P2</title>
+</head>
+
+<body>
+  <h3>[Fase 3] P2. Consultas simples y modificación simple de datos</h3>
+
+  <p>Hola gente:</p>
+  <p>Como habéis podido notar, el Producto 2, que trata sobre Consultas y modificación simple de datos es más corto y
+    sencillo que el anterior.</p>
+  <p>Yo os recomendaría abordarlo inicialmente con el
+    <a target="_blank" href="https://www.w3schools.com/sql/default.asp" rel="noopener noreferrer">tutorial de SQL de
+      w3schools</a>.
+  </p>
+
+  <p>Os pego unos vínculos directos a cada tema a abordar:</p>
+
+  <ul type="circle">
+
+    <li>Funciones de dominio: <a href="https://www.w3schools.com/SQL/sql_count_avg_sum.asp" target="_blank"
+        rel="noopener noreferrer"><code>COUNT</code>, <code>SUM</code>, <code>AVG</code></a>, <a
+        href="https://www.w3schools.com/SQL/sql_min_max.asp" target="_blank"
+        rel="noopener noreferrer"><code>MIN</code></a>, <a href="https://www.w3schools.com/SQL/sql_max.asp"
+        target="_blank" rel="noopener noreferrer"><code>MAX</code></a></li>
+
+    <li><a href="https://dev.mysql.com/doc/refman/8.0/en/date-and-time-functions.html" target="_blank"
+        rel="noopener noreferrer">Funciones de fecha</a>.</li>
+
+    <li><a href="https://www.w3schools.com/SQL/sql_like.asp" target="_blank" rel="noopener noreferrer">Comodines
+        (clausula <code>LIKE</code>).</a></li>
+
+    <li>Asimismo, si los datos están en varias tablas relacionadas, deberéis hacer uso de la cláusula <a
+        href="https://www.w3schools.com/sql/sql_join.asp" target="_blank"
+        rel="noopener noreferrer"><code>JOIN</code></a>, utilizar <a
+        href="https://www.akadia.com/services/sqlsrv_subqueries.html" target="_blank"
+        rel="noopener noreferrer">subconsultas</a> o <a href="https://www.w3schools.com/SQL/sql_union.asp"
+        target="_blank" rel="noopener noreferrer">consultas de <code>UNION</code></a>.</li>
+
+    <li>Por último, se trabajarán las <a href="https://www.w3schools.com/sql/sql_view.asp" target="_blank"
+        rel="noopener noreferrer">vistas (<code>VIEW</code> )</a>. Una vista es una instrucción <code>SELECT</code>
+      almacenada que se consulta como si de una tablas se tratara. Las vistas muestran tablas abstractas que se van
+      actualizando a medida que los datos de las tablas cambian. </li>
+  </ul>
+  <h2>Recomendaciones</h2>
+
+  <h3>1. Consejos para la Sección A (Teoría en Grupo)</h3>
+
+  <p>No veáis esta parte como un trámite. Entender estos conceptos es lo que les ahorrará horas de errores de "sintaxis
+    desconocida" después.</p>
+
+  <ul type="circle">
+    <li>Para los <code>JOIN</code>, visualizad círculos (Diagramas de Venn).<br>
+      En MySQL no existe <code>FULL OUTER JOIN</code>. Investigad cómo simularlo con <code>UNION</code> (os servirá para
+      un futuro).
+    </li>
+    <li><b>Subconsultas vs. Joins</b>: Discutid cuándo usar cada uno. A veces una subconsulta es más legible, pero un
+      <code>JOIN</code> suele ser más eficiente en bases de datos grandes. Profundizaremos en esto en el P4.</li>
+    <li><b><code>UNION</code> vs. <code>UNION ALL</code></b>: <code>UNION</code> hace un trabajo extra eliminando
+      duplicados (como un <code>DISTINCT</code>), mientras que <code>UNION ALL</code> es más rápido porque simplemente
+      "pega" una tabla debajo de la otra.</li>
+  </ul>
+
+  <h3>2. Estrategia para la Sección B (Parte Práctica)</h3>
+  <ul type="circle">
+    <li>
+      <p><b>Sobre las Combinaciones Externas (<code>LEFT/RIGHT JOIN</code>)</b><br>
+      <p>Para los ejercicios 1, 2 y 3 (buscar lo que <b>no está</b>), la técnica a usar es el "Filtro de Nulos". Ejemplo
+        de artistas sin álbumes:</p>
+      <ol>
+        <li>Haced un <code>LEFT JOIN</code> de la tabla principal (p.e. <b>artistas</b>) con la relacionada (p.e.
+          <b>album</b>).</li>
+        <li>Filtrad en el <code>WHERE</code> buscando donde la llave primaria de la segunda tabla sea <code>NULL</code>.
+        </li>
+      </ol>
+      <p>Si un artista no tiene álbum, la columna <b>album-id</b> en el resultado del <code>JOIN</code> aparecerá vacía.</p>
+    </li>
+
+    <li>
+      <p><b>Sobre las Subconsultas</b></p>
+      <ul>
+        <li><b>El Gasto Promedio (Ejercicio 4)</b>: Primero, calculad el promedio total en una consulta aislada. Una vez
+          que funcione, pegadla dentro del <code>WHERE</code> de la consulta principal.</li>
+        <li><b>Correlacionadas (Ejercicio 5)</b>: En este caso, la subconsulta debe "mirar" hacia afuera para comparar
+          la canción con el promedio de <b>su propio género</b>, no del global.</li>
+      </ul>
+    </li>
+
+    <li>
+      <p><b>Sobre las Vistas (<code>VIEW</code>)</b></p>
+      <p>Pensad en una vista como una consulta guardada con un nombre.<br>
+        Aseguraros antes de ejecutar <code>CREATE VIEW</code>, de que su <code>SELECT</code> funciona perfectamente y
+        devuelve los datos exactos que piden.</p>
+    </li>
+
+    <li>
+      <p><b>Sobre las consultas de <code>UNION</code></b></p>
+      <p>Recordad que para que un <code>UNION</code> funcione, <b>ambas consultas deben tener el mismo número de
+          columnas y tipos de datos compatibles.</b> Ejemplo: Si la tabla original no tiene una columna llamada
+        descuentos, por ejemplo, podríais tener que proyectar un valor estático o buscarlo en otra tabla.</p>
+    </li>
+  </ul>
+
+  <h2>3. Consejos para el Informe Final (PDF)</h2>
+  <p>Como os comenté en las videoconferencias, no sólo puntúa el código, también el razonamiento:</p>
+  <ul type="circle">
+    <li><b>Comentarios en SQL</b>: Usad <b>--</b> para explicar qué hace cada bloque.</li>
+    <li><b>Formateo</b>: Usad mayúsculas para palabras reservadas (<code>SELECT</code>, <code>FROM</code>) y minúsculas
+      para tablas/campos. Esto demuestra profesionalismo. Asimismo, diferenciar el código con una fuente monoespaciada del que no lo es, os ahorrará trabajo en la Fase 4 al hacer más legible vuestro documento (listo para presentar a todos).</li>
+    <li><b>Capturas/Resultados</b>: Si el ejercicio lo permite, mencionad cuántas filas devolvió la consulta para
+      validar que el resultado es lógico (Ejemplo: "Esta consulta devolvió 15 artistas sin álbum").</li>
+    <li>
+      <b>Leed los datos, no solo el código</b>. Si la consulta dice que el promedio de duración de una canción es de 50
+      horas, algo está mal (probablemente olvidasteis convertir milisegundos a minutos). En Bases de Datos, el sentido
+      común es la mejor herramienta de depuración.
+    </li>
+  </ul>
+  <p>¡Mucho éxito con el producto 2!</p>
+
+  <p>Un saludo cordial,</p>
+  <h2>🙋🏽‍♀️</h2>
+  <p>
+    <b>Rita de la Torre</b><br>
+    Consultora DAM/DAW/ASIR<br>
+    <a href="mailto:delatorrerita@uoc.edu">delatorrerita@uoc.edu</a>
+  </p>
+
+</body>
+
+</html>

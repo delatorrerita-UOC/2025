@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>chinook-bbdd [P5]</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/enunciado.css">
+</head>
+
+<body>
+	<h1>[P5] Procedimientos Almacenados. Eventos.</h1>
+	<div>
+	<section id="descripcion">
+		<h2>Descripción <b>&#10059;</b></h2>
+		<p>En este producto desarrollaremos procedimientos almacenados utilizando las sentencias del lenguaje incorporado en MySQL: <br>
+		Estructuras de Control, Tratamiento de excepciones y Cursores. Asimismo, aprenderemos a automatizar ciertos procesos mediante eventos.</p>
+	</section>
+	<section id="objetivos">
+		<h2>Objetivos <b>&#9873;</b></h2>
+		<ul>
+			<li>Definir y utilizar procedimientos almacenados para automatizar tareas.</li>
+			<li>Programar tareas para que se ejecuten de forma periódica o en un momento en concreto,<br>
+				de tal manera que podamos automatizar ciertos procesos mediante eventos.</li>
+		</ul>
+	</section>
+	<section id="pasos">	
+		<h2>Pasos a seguir: <b>&#128099;</b></h2>
+		<p>Los pasos a seguir para llevar a cabo el producto son:</p>		
+		<ol>
+			<li>Leer detenidamente las instrucciones e identificar los requerimientos del mismo.</li>
+			<li>Revisar detenidamente la rúbrica de evaluación.</li>
+			<li>Consultar los recursos necesarios facilitados en el aula.</li>
+			<li>Discutir con el grupo las preguntas teóricas de la primera parte del producto.</li>
+			<li>Leer y comprender los enunciados para la <b>parte pr&aacute;ctica</b></li>
+			<li>Responder las preguntas de la parte práctica del producto.</li>
+		</ol>
+	</section>
+	<section id="teoria">				
+		<h3>Sección A. Parte Teórica &#128491; (para discutir en Grupo)</h3>
+		<p>Las cuestiones relativas a la teoría de la Base de Datos no se entregan al consultor. Su propósito es discutirlas en el grupo para realizar las pruebas de Evaluación Teórica al final de cada producto así como las Pruebas de Síntesis.</p>
+	<h4>Procedimientos Almacenados (Stored Procedures)</h4>
+	<ul type="circle">
+		<li>Explica qué es un procedimiento almacenado y en qué se diferencia de una función UDF y de un disparador.</li>
+		<li>Explica cuál es la sintaxis básica para crear un procedimiento almacenado.</li>
+		<li>¿Qué tipos de parámetros puede tener un Procedimiento Almacenado?
+		<br>¿Cuál es la diferencia entre ellos?</li>
+		<li>¿Cómo invocamos a un Procedimiento Almacenado para ejecutarlo?</li>
+		<li>¿Con cuál sentencia se elimina una Procedimiento Almacenado?</li>
+	</ul>
+	<h4>Estructuras de Control</h4>
+	<ul type="circle">
+		<li>Explicar e ilustrar con un ejemplo (para cada instrucción): Cómo se utilizan las instrucciones condicionales IF y CASE dentro de un Procedimiento Almacenado</li>
+		<li>Explicar e ilustrar con un ejemplo (para cada instrucción): Cómo se utilizan los bucles LOOP, REPEAT y WHILE dentro de un Procedimiento Almacenado</li>
+		<li>
+			<p>Cuando trabajamos con procedimientos almacenados en MySQL tenemos que tener en cuenta que durante la ejecución de nuestra aplicación se pueden producir errores. Para llevar el control de estos errores podemos definir “handlers” (controladores de error) en nuestro procedimientos almacenados. Responder:</p>
+			<ol>
+				<li>¿Cuál es la sintaxis de los controladores de error?</li>
+				<li>¿Qué acciones se pueden tomar al encontrar un error y con qué sentencias se realizan estas acciones?</li>
+				<li>¿Cuáles son las posibles condiciones de error?</li>
+			</ol>
+		</li>
+		</ul>
+		<h4>Cursores</h4>
+		<ul type="circle">
+			<li>¿Qué es un <b>cursor</b> y qué nos permiten realizar los cursores? </li>
+			<li>¿Cuál	es secuencia de instrucciones para trabajar con los cursores?</li>	
+			<li>Cuando se está recorriendo un cursor y no quedan filas por recorrer se lanza el error NOT FOUND, que se corresponde con el valor SQLSTATE ‘02000’. ¿Cómo se puede manejar este error? </li>
+		</ul>
+		<h4>Transacciones en Procedimientos Almacenados</h4>
+		<ul type="circle">
+			<li>¿Cómo se pueden incluir transacciones dentro de Procedimientos Almacenados y qué ventajas tiene incluirlas?</li>
+			<li> Ilustrar un ejemplo, con un trozo de código, donde se incluya una transacción en un Procedimiento Almacenado.</li>
+		</ul>
+		<h4>Eventos</h4>
+		<ul type="circle">
+			<li>Definir  que es un evento (EVENT) de MySQL.</li>
+			<li>¿Cómo se habilita el servidor de Bases de Datos para que puedan ejecutar eventos?</li>
+			<li>Mostrar sintaxis para crear un evento explicando cada una de las líneas que la conforman.</li>
+			<li>¿Cómo podemos listar los eventos guardados en la Base de Datos?</li>
+			<li>¿Con qué sentencia se elimina un evento y cómo se puede deshabilitar un evento?</li>
+		</ul>
+  </section>
+	<section id="practica">
+		<h3>SECCIÓN B. PARTE PRÁCTICA</h3>
+		<p>Cada una de las sentencias SQL utilizadas para realizar la parte práctica, deberán ser copiadas y pegadas en un archivo que deberá publicarse con el nombre <b>BBDD_Producto[n]_Grupo[num].pdf</b>. Cada instrucción deberá ser pegada, comentada e idealmente se deberá indicar cómo se llegó a resolver la pregunta.</p>	
+		<ol>
+			<li>Crear manualmente (CREATE TABLE) una tabla denominada <b>BonosRepresentantes</b>. Agregar los siguientes campos:</li>
+			<ul>
+				<li><b>EmployeeId:</b> int</li>
+				<li><b>NombreRepresentante:</b> varchar(100)</li>
+				<li><b>Mes:</b> char(7)</li>
+				<li><b>TotalVentaClientes:</b> decimal(10,2)</li>
+				<li><b>PorcentajeSobreMaximo:</b> decimal(5,2)</li>
+				<li><b>BonoAsignado:</b> decimal(10,2)</li>
+
+			</ul>
+			
+			<li>Crear un procedimiento almacenado denominado <b>GenerarBonosPorComparativa</b> que realice lo siguiente:</li>
+			<ul type="circle">
+				<li>Vaciar la tabla <b>bonos_representantes</b>.</li>
+				<li>Identificar cuál la mayor venta de un representante en el mes indicado (se recibirá por parámetro).</li>
+				<li>Seleccionar los representantes cuyos clientes hayan generado al menos el 75 % de esa venta máxima</li>
+				<li>Insertar estos representantes en la tabla <b>BonosRepresentantes</b> con el importe asignado.</li>
+				<li>El bono asignado será de 500€.</li>
+			</ul>			
+
+			<li>Crear manualmente una tabla denominada <b>ventas_mensuales</b>. Agregar los siguientes campos:</li>
+			<ul>
+				<li><b>Año:</b> int</li>
+				<li><b>VentasEne:</b> decimal(10,2)</li>
+				<li><b>VentasFeb:</b> decimal(10,2)</li>
+				<li><b>VentasMar:</b> decimal(10,2)</li>
+				<li><b>VentasAbr:</b> decimal(10,2)</li>
+				<li><b>VentasMay:</b> decimal(10,2)</li>
+				<li><b>VentasJun:</b> decimal(10,2)</li>
+				<li><b>VentasJul:</b> decimal(10,2)</li>
+				<li><b>VentasAgo:</b> decimal(10,2)</li>
+				<li><b>VentasSep:</b> decimal(10,2)</li>
+				<li><b>VentasOct:</b> decimal(10,2)</li>
+				<li><b>VentasNov:</b> decimal(10,2)</li>
+				<li><b>VentasDic:</b> decimal(10,2)</li>
+			</ul>
+
+			<li>Crear un procedimiento almacenado denominado <b>GenerarReporteVentasAnuales</b> que realice lo siguiente:</li>
+			<ul type="circle">				
+				<li>Vaciar la tabla <b>ventas_mensuales</b>.</li>
+				<li>Llenar la tabla con las ventas del año que se envíe por parámetro.</li>
+				<li>Si el año no ha tenido ventas, indicarlo mediante un mensaje.</li>
+				<li>Si no se ha llegado a diciembre, colocar 0.00 como el total de venta de cada mes.</li>
+			</ul>	
+			
+			<li>Crear un evento que se ejecute el primer día de cada mes y ejecute automáticamente el procedimiento almacenado <b>GenerarBonosPorComparativa.</b></li>
+			
+			<li><p>Inventar un procedimiento almacenado que permita optimizar las operaciones del sistema. Crear un evento periódico para ejecutarlo. Justificar su importancia.</p></li>
+		</ol>	
+	</section>
+
+	<h2>Se requiere <b>&#9776;</b></h2>
+
+	<p>Los requisitos indispensables para realizar el producto son:</p>
+	<ol>
+		<li>Consultar las fuentes de información mencionadas en la <b>FASE 3</b> del Aula Virtual.</li>
+		<li>Disponer de los diferentes archivos .sql con las tablas del proyecto</li>
+		<li>Tener acceso a una Base de Datos en AWS. Los datos de conexión serán facilitados por el consultor.</li>
+	</ol>
+	
+	<h2>Recursos Básicos <b>&#128366; &#128392;</b></h2>
+	<p>Para llevar a cabo el producto puedes apoyarte con los materiales y fuentes de información disponibles a continuación:</p>
+	
+	<ul type="circle">
+		<li><p><a href="https://dev.mysql.com/downloads/mysql/" target="_blank" rel="noopener">MySQL Community Server</a></p></li>
+		<li><p><a href="https://www.w3schools.com/MySQL/default.asp" target="_blank" rel="noopener"> Learn MySQL, w3schools</a></p></li>
+		<li><p>O'Reilly Learning. <a href="https://learning.oreilly.com/library/view/mysql-r-administrators-bible/9780470416914/pt02.html" target="_blank" rel="noopener"> MySQL Administrator's Bible. </a><br />Cap&iacute;tulos 4 y 7. Stored Routines, Triggers, and Events</p>
+		</li>
+		<li><p>O'Reilly Learning. <a href="https://learning.oreilly.com/library/view/mysql-stored-procedure/0596100892/" target="_blank" rel="noopener"> MySQL Stored Procedure Programming.</a><br>
+		<span class="peque">Puedes entrar a la librería O'Reilly con tu cuenta de gmail de la UOC.</span></p>
+			</li>
+		<li><p><a href="https://dev.mysql.com/doc/refman/8.0/en/" target="_blank" rel="noopener"> MySQL 8.0 Reference Manual</a></li>
+	</ul>
+	
+	<h2>Criterios de evaluación <em>&#10004;</em></h2>
+	<ul>
+		<li>La puntuación máxima del producto es un 12.</li>
+		<li>La puntuación mínima para superarlo es de 6 sobre 12.</li>
+	</ul>
+
+	<h2>Indicaciones para la entrega de la actividad <b>↪</b></h2>
+	<p>Para la entrega de la actividad deberás:</p>
+	
+	<ul>
+		<li>Hacerlo por el canal indicado en el aula virtual.</li>
+		<li>Formato: Cada grupo hará <b>una sola entrega</b> en formato .pdf</li>
+		<li>Nombre del archivo: <b>BBDD_Producto[n]_Grupo[num].pdf</b></b></li>
+	</ul>
+</div>	
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>chinook-bbdd [P2]</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/enunciado.css">
+</head>
+
+<body>
+	<h1>[P2] Consultas Avanzadas y Vistas</h1>
+	<div>
+	<section id="descripcion">
+		<h2>Descripción <b>&#10059;</b></h2>
+		<p>En este producto utilizaremos consultas en las que intervienen m&aacute;s de una tabla utilizando sentencias SQL (DML) donde se utilizar&aacute;n combinaciones externas, consultas de uni&oacute;n y subconsultas. Adicionalmente, crearemos vistas, las cuales nos permitir&aacute;n ampliar el poder de an&aacute;lisis de ciertas consultas.</p>
+	</section>
+	<section id="objetivos">
+		<h2>Objetivos <b>&#9873;</b></h2>
+	<ul>
+			<li>Ampliar los conocimientos sobre consultas y realizar consultas m&aacute;s complejas utilizando combinaciones externas, subconsultas o consultas de UNION.</li>
+			<li>Crear vistas para simplificar la capacidad de an&aacute;lisis de los datos o guardar consultas repetidas en el tiempo.</li>
+	</ul>
+	</section>
+	<section id="pasos">	
+		<h2>Pasos a seguir: <b>&#128099;</b></h2>
+		<p>Los pasos a seguir para llevar a cabo el producto son:</p>		
+		<ol>
+			<li>Leer detenidamente las instrucciones e identificar los requerimientos del mismo.</li>
+			<li>Revisar detenidamente la rúbrica de evaluación.</li>
+			<li>Consultar los recursos necesarios facilitados en el aula.</li>
+			<li>Discutir con el grupo las preguntas teóricas de la primera parte del producto.</li>
+			<li>Leer y comprender los enunciados para la <b>parte pr&aacute;ctica</b></li>
+			<li>Responder las preguntas de la parte práctica del producto.</li>
+		</ol>
+	</section>
+	<section id="teoria">				
+		<h3>Sección A. Parte Teórica &#128491; (para discutir en Grupo)</h3>
+		<p>Las cuestiones relativas a la teoría de la Base de Datos no se entregan al consultor. Su propósito es discutirlas en el grupo para realizar las pruebas de Evaluación Teórica al final de cada producto así como las Pruebas de Síntesis.</p>	
+		<h4>Combinaciones en SQL</h4>
+		<ul type="circle">
+			<li>Explica para qué se utiliza la cláusula JOIN, e indica cuándo es necesario utilizarla.</li>
+			<li>¿A qué se llama combinación externa? ¿Cuántos tipos de JOINs hay en MySQL? Agrega una ilustración a la respuesta para aclarar los conceptos.</li>
+			<li>¿Cómo se combinan más de dos tablas?</li>
+			<li>¿La condición JOIN debe utilizar siempre el operador igual? ¿Se puede utilizar otro operador de comparación? ¿Cómo se hace?</li>
+		</ul>
+		<h4>Subconsultas</h4>
+		<ul type="circle">
+			<li>¿Qué es una subconsulta?</li>
+			<li>¿Cuántos tipos de subconsultas hay? Desarrolla y explica</li>
+			<li>¿Dónde se pueden incluir las subconsultas dentro de las cláusulas SQL?</li>
+		</ul>
+		<h4>Consultas de UNION</h4>
+		<ul type="circle">
+			<li>¿Qué es una consulta de UNION y para qué sirve?</li>
+			<li>¿Qué requisitos se deben cumplir para poder crear una consulta de UNION?</li>
+			<li>¿Qué diferencia existe entre las cláusulas UNION vs. UNION ALL?</li>
+			<li>¿Qué diferencia existe entre las cláusulas UNION vs. JOIN?</li>
+		</ul>
+		<h4>Vistas</h4>
+		<ul type="circle">
+			<li>¿Qué es una vista?</li>
+			<li>Explica el uso de las sentencia CREATE OR REPLACE VIEW</li>
+			<li>¿Cuáles son los privilegios necesarios para crear una vista?</li>
+			<li>¿Se pueden relacionar dos vistas o una vista y una tabla?</li>
+			<li>¿Cuántos niveles de vista hay?</li>
+		</ul>
+	</section>
+	<div>
+		<h3>Sección B. Parte Práctica</h3>
+		<p>Cada una de las sentencias SQL utilizadas para realizar la parte práctica, deberán ser copiadas y pegadas en un archivo que deberá publicarse con el nombre <b>BBDD_Producto[n]_Grupo[num].pdf</b>. Cada instrucción deberá ser pegada, comentada e idealmente se deberá indicar cómo se llegó a resolver la pregunta.</p>	
+		<ol>
+			<h4>Resolver con Combinaciones Externas</h4>
+			<li>Crear una nueva consulta que muestre a los artistas que están registrados en la Base de Datos pero no tienen ningún álbum asociado.
+				</b></li>
+			<li>Crear una nueva consulta que muestre los playlist que no contengan tracks.</li>
+			<li>Mostrar una lista con aquellos tracks que nunca se han vendido.</li>
+		<h4>Resolver con Subconsultas</h4>		
+			<li>Mostrar aquellos clientes que han superado el gasto promedio total de todos los clientes.</li>
+			<li>Mostrar aquellas canciones cuya duración es mayor que el promedio de su género musical.</li>
+			<li>Muestra las facturas con más líneas que el promedio de líneas por factura.</li>
+			<li>Muestra aquellos artistas con más de 10 pistas vendidas</li>
+			
+		<h4>Resolver con Vistas</h4>
+			<li>Guarda en una vista denominada <b>Clientes VIP</b> a aquellos clientes que han gastado más que el promedio de clientes.</li>
+			<li>Crear una vista que muestre el total de ingresos generados por cada tipo de archivo (audio, video, etc.), combinando MediaType con las ventas registradas en InvoiceLine. Guardar con el nombre <b>VentasPorTipoDeMedio </b></i></li>
+			<li>Crear una vista que calcule la duración media (en milisegundos) de las pistas incluidas en cada playlist</li>
+		
+		<h4>Resolver con Consultas de UNION</h4>		
+			<li>Crear una consulta de UNION producto de  las tablas <b>customer</b> y <b>employee</b> que muestre un Directorio telefónico combinado de clientes y empleados:</li>		
+			<li>Crear una consulta de UNION que en forma de tabla las columnas <b>mes, año, 'ventas' as concepto, totalventas</b> y a continuación <b>mes, año, 'descuentos' as concepto, totaldescuentos</b>. Guardarla en forma de vista con el nombre de <b>ventas.</b></li>
+		</ol>
+	</div>
+	<div>
+		<h2>Se requiere <b>&#9776;</b></h2>
+
+		<p>Los requisitos indispensables para realizar el producto son:</p>
+		<ol>
+			<li>Consultar las fuentes de información mencionadas en la <b>FASE 3</b> del Aula Virtual.</li>
+			<li>Disponer de los diferentes archivos .sql con las tablas del proyecto</li>
+			<li>Tener acceso a una Base de Datos en AWS. Los datos de conexión serán facilitados por el consultor.</li>
+		</ol>
+		
+		<h2>Recursos Básicos <b>&#128366; &#128392;</b></h2>
+		<p>Para llevar a cabo el producto puedes apoyarte con los materiales y fuentes de información disponibles a continuación:</p>
+		
+		<ul type="circle">
+			<li><p><a href="https://dev.mysql.com/downloads/mysql/" target="_blank" rel="noopener">MySQL Community Server</a></p></li>
+			<li><p><a href="https://www.w3schools.com/MySQL/default.asp" target="_blank" rel="noopener"> Learn MySQL, w3schools</a></p></li>
+			<li><p>O'Reilly. <a href="https://learning.oreilly.com/library/view/sql-queries-for/9780134858432/" target="_blank" rel="noopener">SQL Queries for Mere Mortals: A Hands-On Guide to Data Manipulation in SQL, 4th Edition</a><br>
+			<span class="peque">Puedes entrar a la librería O'Reilly con tu cuenta gmail de la UOC.</span></p></li>
+			<li><p>O'Reilly. <a href="https://learning.oreilly.com/course/learning-sql/9780134193700/" target="_blank" rel="noopener">Learning SQL. Your complete SQL video course.</a><br>
+			<span class="peque">Puedes entrar a la librería O'Reilly con tu cuenta gmail de la UOC.</span></p></li>			
+			<li><p><a href="https://dev.mysql.com/doc/refman/8.0/en/" target="_blank" rel="noopener"> MySQL 8.0 Reference Manual</a></li>
+		</ul>
+		
+		<h2>Criterios de evaluación <em>&#10004;</em></h2>
+		<ul>
+			<li>La puntuación máxima del producto es un 12.</li>
+			<li>La puntuación mínima para superarlo es de 6 sobre 12.</li>
+		</ul>
+
+		<h2>Indicaciones para la entrega de la actividad <b>↪</b></h2>
+		<p>Para la entrega de la actividad deberás:</p>
+		
+		<ul>
+			<li>Hacerlo por el canal indicado en el aula virtual.</li>
+			<li>Formato: Cada grupo hará <b>una sola entrega</b> en formato .pdf</li>
+			<li>Nombre del archivo: <b>BBDD_Producto[n]_Grupo[num].pdf</b></b></li>
+		</ul>
+		
+	</div>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>chinook-bbdd [P4]</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/enunciado.css">
+</head>
+
+<body>
+	<h1>[P4] Índices, Roles y Optimización de Consultas</h1>
+	<div>
+	<section id="descripcion">
+		<h2>Descripción <b>&#10059;</b></h2>
+		<p>En este producto estudiaremos algunas técnicas e instrucciones que nos permitirán optimizar las consultas de nuestra base de datos.</p>
+	</section>
+
+	<section id="objetivos">
+		<h2>Objetivos <b>&#9873;</b></h2>
+		<ul>
+			<li>Analizar el rendimiento de una consulta.</li>
+			<li>Optimizar el tiempo de ejecución de una consulta.</li>
+			<li>Crear, eliminar, actualizar y reordenar índices.</li>
+			<li>Utilizar consultas precompiladas.</li>
+			<li>Conocer los roles como mecanismo para optimizar la administración de usuarios.</li>
+		</ul>
+	</section>
+
+	<section id="pasos">	
+		<h2>Pasos a seguir: <b>&#128099;</b></h2>
+		<p>Los pasos a seguir para llevar a cabo el producto son:</p>		
+		<ol>
+			<li>Leer detenidamente las instrucciones e identificar los requerimientos del mismo.</li>
+			<li>Revisar detenidamente la rúbrica de evaluación.</li>
+			<li>Consultar los recursos necesarios facilitados en el aula.</li>
+			<li>Discutir con el grupo las preguntas teóricas de la primera parte del producto.</li>
+			<li>Leer y comprender los enunciados para la <b>parte pr&aacute;ctica</b></li>
+			<li>Responder las preguntas de la parte práctica del producto.</li>
+		</ol>
+	</section>
+
+	<section id="desarrollo">
+		<h2>Desarrollo del Producto <b>&#9874;</b></h2>
+		<p>En este producto se deberá responder a cada una de las preguntas realizadas mostrando un ejemplo. <mark>Para dar el ejemplo, deberán usarse las tablas y campos de la Base de Datos del proyecto.</mark></p>
+
+		<h3>Buenas prácticas en consultas</h3>
+		<p>Del recurso recomendado <b>Effective MySQL Optimizing SQL Statements</b>, se pueden extraer las siguientes buenas prácticas al realizar consultas. Explicar el por qué de las mismas. (Dar un ejemplo)</p>
+		<ol>
+			<li>Sustituir los operadores <b>OR</b> en lo posible en las cláusulas WHERE y HAVING por el operador IN</li>
+			<li>Realizar búsquedas binarias sobre Índices FULLTEXT para sustituir caracteres comodín</li>
+			<li>Tener un equilibrio en el número de índices (Índices faltantes o indexación excesiva)</li>
+			<li>Preparar VISTAS o utilizar tablas temporales para sustituir demasiados JOINS en una consulta.</li>
+			<li>Todas las tablas deben tener una clave primaria y según el tipo de búsquedas que se hagan un índice agrupado.</li>
+		</ol>
+		
+		<h3>Sentencias EXPLAIN y OPTIMIZE TABLE</h3>
+		<p>La instrucción EXPLAIN permite ver cómo se ejecutará una consulta en nuestra Base de Datos. La tabla que devuelve la sentencia EXPLAIN contiene unos campos que son de vital importancia para entender el funcionamiento de esta consulta. Por otra parte OPTIMIZE TABLE es una instrucción que debe usarse si se ha eliminado gran parte de una tabla o se han hecho muchos cambios en una tabla con filas de tamaño variable para desfragmentarla y recuperar el espacio no usado. Responder las siguientes interrogantes. (Dar un ejemplo)</p>
+		<ol start="6">
+			<li>&nbsp;Explicar cómo se utiliza la sentencia EXPLAIN.</li>
+			<li>¿Para qué se usan las columnas <b>key</b> y <b>type</b> y cuáles son los posibles valores de esta última columna.?</li>
+			<li>¿Cómo se interpretan los valores de la columna <b>type</b> y qué acciones podrían tomarse para optimizar la consulta?</li>
+			<li>¿Cuál es la sintaxis de OPTIMIZE TABLE?</li>
+		</ol>
+
+		<h3>Creación de índices</h3>
+		<p>Un índice es estructura que permite la optimización del rendimiento de una Base de Datos al facilitar la recuperación eficiente de los datos minimizando la cantidad de accesos al disco necesarios al consultar los registros. A este respecto explicar cada una de las siguientes preguntas. (Dar un ejemplo de cada una de ellas)</p>
+		<ol start="10">
+			<li>¿Qué sentencia SQL permite la creación de Índices? Indicar la sintaxis.</li>
+			<li>¿Con cuál sentencia se elimina un índice?</li>
+			<li>¿Para qué se utilizan los diferentes tipos de índice en MySQL (PRIMARY | UNIQUE | FULLTEXT | SPATIAL)?</li>
+			<li>Explica las características de los tipos de estructuras en las cuales se pueden crear índices (B-TREE y HASH) y cuándo es mejor usar una u otra.</li>
+			<li>¿Cómo se crea un índice sobre varios campos y cuál sería su utilidad?</li>
+			<li>MySQL ofrece búsqueda FULLTEXT.<br> 
+			Esto permite buscar en las tablas aquellas columnas que contengan textos que ofrezcan las mejores coincidencias de palabras y frases respecto de una búsqueda. ¿Qué condiciones deben darse para poder utilizar este tipo de búsquedas?</li>
+			<li>¿Qué es una búsqueda BOOLEAN FULLTEXT y por qué es mucho más rápida que utilizar el operador LIKE?.</li>		
+			<li>¿Es posible realizar búsquedas FULLTEXT contra varias columnas de una tabla? (Ejemplo)</li>
+		</ol>
+
+		<h3>Prepared Statements</h3>
+		<p>Un <strong>Prepared Statement</strong> es un mecanismo que permite que la ejecución de ciertas sentencias SQL que se ejecutan repetidas en el tiempo sean más rápidas. El mecanismo que establecen las Bases de Datos para hacer más eficiente el proceso, es que le indiquemos previamente el tipo de sentencia que vamos a usar, de forma que la base de datos la "precompila" y la guarda en condiciones de ser ejecutada inmediatamente, sin necesidad de analizarla en cada caso. Explica (dando un ejemplo para cada respuesta.)</p>
+		<ol start="18">
+			<li>¿Cuáles son los pasos del proceso para crear un Prepared Statement en MySQL?</li>
+			<li>¿Qué otros procesos se pueden rescatar de la lectura de los recursos recomendados?</li>
+		</ol>
+
+		<h3>Análisis productos previos</h3>
+		<p>Revisad los productos 2 y 3 aplicando los conocimientos adquiridos en este producto.</p>
+		<ol start="20">
+			<li>¿Cómo se podrían optimizar las consultas o qué consultas toman en cuenta los puntos de este producto y por qué?</li>
+		</ol>
+		
+		<h3>Roles</h3>
+		<p>En relación a los permisos de usuario, MySQL en su versión 8, permite hacer uso de los Roles, los cuales permiten simplificar la administración de usuarios en la Base de Datos. A este respecto, explica:</p>
+		<ol start="21">
+			<li>Qué es un rol y cómo se crea un rol?</li>
+			<li>¿Cómo se asignan usuarios a un rol?</li>
+			<li>¿Cómo retirar usuarios de un rol?</li>
+			<li>¿Cómo eliminar un rol y qué se requiere antes de hacerlo?</li>
+			<li>¿Qué roles se podrían crear para la Base de Datos? (<b>Justificar</b>)</li>
+		</ol>
+	</section>
+	<h2>Se requiere <b>&#9776;</b></h2>
+
+	<p>Los requisitos indispensables para realizar el producto son:</p>
+	<ol>
+		<li>Consultar las fuentes de información disponibles en el aula virtual.</li>
+		<li>Disponer de los diferentes archivos .sql con las tablas del proyecto</li>
+		<li>Tener acceso a una Base de Datos en AWS. Los datos de conexión serán facilitados por el consultor.</li>
+	</ol>
+	
+	<h2>Recursos Básicos <b>&#128366; &#128392;</b></h2>
+	<p>Para llevar a cabo el producto puedes apoyarte con los materiales y fuentes de información disponibles a continuación:</p>
+	
+	<ul type="circle">
+		<li><p><a href="https://dev.mysql.com/downloads/mysql/" target="_blank" rel="noopener">MySQL Community Server</a></p></li>
+		<li><p><a href="https://www.w3schools.com/MySQL/default.asp" target="_blank" rel="noopener"> Learn MySQL, w3schools</a></p></li>
+		<li><p>O'Reilly. <a href="https://learning.oreilly.com/library/view/mysql-8-query/9781484255841/" target="_blank" rel="noopener">MySQL 8 Query Performance Tuning: <b>A Systematic Method for Improving Execution Speeds</b></a><br>
+		<span class="peque">Puedes entrar a la librería O'Reilly con tu cuenta gmail de la UOC.</span></p></li>
+		<li><p>O'Reilly. <a href="https://learning.oreilly.com/library/view/advanced-mysql-8/9781788834445/" target="_blank" rel="noopener">Advanced MySQL 8</a><br>
+		<span class="peque">Puedes entrar a la librería O'Reilly con tu cuenta gmail de la UOC.</span></p>
+		</li>
+		<li><p><a href="https://dev.mysql.com/doc/refman/8.0/en/" target="_blank" rel="noopener"> MySQL 8.0 Reference Manual</a></li>
+	</ul>
+	
+	<h2>Criterios de evaluación <em>&#10004;</em></h2>
+	<ul>
+		<li>La puntuación máxima del producto es un 12.</li>
+		<li>La puntuación mínima para superarlo es de 6 sobre 12.</li>
+	</ul>
+
+	<h2>Indicaciones para la entrega de la actividad <b>↪</b></h2>
+	<p>Para la entrega de la actividad deberás:</p>
+	
+	<ul>
+		<li>Hacerlo por el canal indicado en el aula virtual.</li>
+		<li>Formato: Cada grupo hará <b>una sola entrega</b> en formato .pdf</li>
+		<li>Nombre del archivo: <b>BBDD_Producto[n]_Grupo[num].pdf</b></li>
+	</ul>
+</div>
+</body>
+</html>
+
+
+
+<div id="enlaces">
+<h2>Enlaces</h2>
+	<ol>
+		<li><a target="_blank" href="https://www.sqlshack.com/es/tecnicas-de-optimizacion-de-consultas-en-sql-server-consejos-y-trucos-de-aplicacion/">
+		Buenas prácticas en consultas</a></li>
+		<li><a target="_blank" href="https://www.adictosaltrabajo.com/2016/10/24/optimizacion-de-consultas-en-mysql/">Sentencias EXPLAIN y OPTIMIZE TABLE</a></li>
+		<li><a target="_blank" href="https://www.adictosaltrabajo.com/2015/09/11/introduccion-a-indices-en-mysql/">Creación de índices</a></li>
+		<li><a target="_blank" href="https://programacion.net/articulo/indices_y_optimizacion_de_consultas_305/2">Indices y optimización de consultas</a></li>
+		<li><a target="_blank" href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-natural-language.html">FULLTEXT</a></li>
+		<li><a target="_blank" href="https://severalnines.com/blog/full-text-searches-mysql-good-bad-and-ugly/">Búsquedas FULLTEXT</a></li>
+		<li><a target="_blank" href="http://www.chuidiang.org/java/mysql/PreparedStatement-java-mysql.php">Prepared Statements</a></li>
+		<li>https://adictosaltrabajo.com/2016/10/24/optimizacion-de-consultas-en-mysql/</li>
+		<li>https://josejuansanchez.org/bd/practica-14/index.html</li>
+	</ol>
+</div>

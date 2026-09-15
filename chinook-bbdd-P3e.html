@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<title>chinook-bbdd [P3]</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/enunciado.css">
+</head>
+
+<body>
+	<h1>[P3] Consultas Avanzadas II. Funciones</h1>
+	<div>
+		<section id="descripcion">
+			<h2>Descripción <b>&#10059;</b></h2>
+			<p>En este producto utilizaremos consultas en las incluiremos funciones condicionales. También aprenderemos a
+				crear funciones UDF (Funciones definidas por el usuario) las cuales se almacenan en la Base de Datos y se pueden
+				usar en las sentencias SQL de tipo DQL (consultas).</p>
+		</section>
+		<section id="objetivos">
+			<h2>Objetivos <b>&#9873;</b></h2>
+			<ul>
+				<li>Generar consultas que hagan uso de las funciones condicionales del MySQL.</li>
+				<li>Crear funciones almacenadas definidas por el usuario (funciones UDF) las cuales facilitarán ciertas
+					operaciones repetitivas utilizadas en las consultas.</li>
+				<li>Utilizar variables de usuario para parametrizar consultas.</li>
+			</ul>
+		</section>
+		<section id="pasos">
+			<h2>Pasos a seguir: <b>&#128099;</b></h2>
+			<p>Los pasos a seguir para llevar a cabo el producto son:</p>
+			<ol>
+				<li>Leer detenidamente las instrucciones e identificar los requerimientos del mismo.</li>
+				<li>Revisar detenidamente la rúbrica de evaluación.</li>
+				<li>Consultar los recursos necesarios facilitados en el aula.</li>
+				<li>Discutir con el grupo las preguntas teóricas de la primera parte del producto.</li>
+				<li>Leer y comprender los enunciados para la <b>parte pr&aacute;ctica</b></li>
+				<li>Responder las preguntas de la parte práctica del producto.</li>
+			</ol>
+		</section>
+		<section id="teoria">
+			<h3>Sección A. Parte Teórica &#128491; (para discutir en Grupo)</h3>
+			<p>Las cuestiones relativas a la teoría de la Base de Datos no se entregan al consultor. Su propósito es
+				discutirlas en el grupo para realizar las pruebas de Evaluación Teórica al final de cada producto así como las
+				Pruebas de Síntesis.</p>
+			<h4><strong>Funciones condicionales</strong></h4>
+			<ul type="circle">
+				<li>Explicar para qué y cómo (poner un ejemplo) se utilizan las siguientes funciones condicionales de MySQL:
+					CASE, COALESCE, IF, IFNULL, NULLIF. Indica las diferencias entre ellas.</li>
+			</ul>
+			<h4><strong>Funciones UDF (Funciones almacenadas)</strong></h4>
+			<ul type="circle">
+				<li>¿Qué es una función almacenada o función definida por el usuario (UDF)?</li>
+				<li>Mostrar la sintaxis básica de una función UDF y para qué se utiliza cada instrucción.</li>
+				<li>¿Cómo se utiliza una función UDF?</li>
+			</ul>
+			<h4><strong>Variables de @usuario</strong></h4>
+			<ul type="circle">
+				<li>¿Qué es una variable de usuario?.</li>
+				<li>¿Cómo se define una variable de usuario? ¿Qué requisitos debe tener su nombre?</li>
+				<li>¿Cómo se utilizan las variables de usuario dentro de una instrucción SELECT? </li>
+				<li>¿Cómo guardar valores de una consulta en una variable de usuario?</li>
+			</ul>
+		</section>
+		<section id="practica">
+			<h3>Sección B. Parte Práctica</h3>
+			<p>Cada una de las sentencias SQL utilizadas para realizar la parte práctica, deberán ser copiadas y pegadas en un archivo que deberá publicarse con el nombre <b>BBDD_Producto[n]_Grupo[num].pdf</b>. Cada instrucción deberá ser pegada, comentada e idealmente se deberá indicar cómo se llegó a resolver la pregunta.</p>
+			<ol>
+				<li>Muestra cuántas facturas se han realizado a cada  país, y cuenta el número facturas que superan o igualan 50€ así como cuántas facturas están por debajo de 50€. Utilizar la <b>función IF</b> y agrupar.</p></li>
+				<li>
+					<p>Haz una consulta que muestre segmentados a los clientes por total facturado. Usar la función CASE para clasificarlo:</p>
+					<ul>
+						<li>Bajo: menos de 20 €</li>
+						<li>Medio: entre 20 € y 50 €</li>
+						<li>Alto: más de 50 €</li>
+						<li>Sin compras: si no tiene facturas</li> 
+					</ul>
+				</li>
+				<li>
+					<p>Inventar una consulta que haga uso de una de las siguientes funciones: COALESCE, IFNULL,
+						NULLIF.<br>Explicar su objetivo en los comentarios de la plantilla .sql</p>
+				</li>
+				<h4><strong>Funciones UDF</strong></h4>
+				<li>
+					<p>Crear una función UDF llamada <b>NombreResumido</b> que reciba como parámetros un nombre y un apellido y
+						retorne un nombre en formato (Inicial de Nombre + "." + Apellido en mayúsculas. Ejemplo: L. LANAU).
+						<br>Probar la función contra la tabla customer y employee y enviando directamente el nombre con tus
+						datos en forma literal, por ejemplo escribir:<br><b>SELECT NombreResumido("Rita", "de la Torre")</b> para probar la función, deberá devolver: <b>R. DE LA TORRE</b>.
+					</p>
+				</li>
+				<li>Crear una función UDF denominada <b>NormalizarNombrePista</b> que muestre el nombre de un track a formato estandarizado: sin espacios extras y todo en minúsculas.
+					</li>
+				<li>
+					<p>Crear una función UDF llamada <b>CalcularMargenGanancia</b> que calcule el margen de ganancia estimado por track, considerando un coste fijo por MB que se enviará por parámetro.
+				</li>
+				<li>
+					<p>Inventar una función UDF que permita optimizar las operaciones de la Base de Datos. Justificarla.</p>
+				</li>
+
+				<h4><strong>Variables de @usuario</strong></h4>
+				<li>Hacer una vista llamada <b>cumpleanhos</b>. La consulta de la vista deberá ser una consulta de UNION sobre las tablas customer y employee y que muestre los siguientes campos:
+					<em>Id, FirstName, LastName, dia, mes, birthdate, type (cliente/empleado)</em></li>
+				<li>Crear una variables de usuario denominada <b>@monthbirthday</b> y asignarle el valor del mes en curso.</li>
+					</ul>
+				<li>Hacer una consulta basada en la vista <b>cumpleanhos</b>, que utilice la variable de usuario para filtrar los cumpleañeros del mes.</li>
+				<li>Crear una variable de usuario que nos permita filtrar por un género musical específico, y luego inventar una consulta que use esa variable para seleccionar pistas de ese género.</li>
+				<li>Inventa una variable de usuario que te permita filtrar más cómodamente alguna consulta. Muestra el procedimiento.</li>
+			</ol>
+		</section>
+		<h2>Se requiere <b>&#9776;</b></h2>
+
+		<p>Los requisitos indispensables para realizar el producto son:</p>
+		<ol>
+			<li>Consultar las fuentes de información mencionadas en la <b>FASE 3</b> del Aula Virtual.</li>
+			<li>Disponer de los diferentes archivos .sql con las tablas del proyecto</li>
+			<li>Tener acceso a una Base de Datos en AWS. Los datos de conexión serán facilitados por el consultor.</li>			
+		</ol>
+
+		<h2>Recursos Básicos <b>&#128366; &#128392;</b></h2>
+		<p>Para llevar a cabo el producto puedes apoyarte con los materiales y fuentes de información disponibles a
+			continuación:</p>
+
+		<ul style="list-style-type:circle">
+			<li><p><a href="https://dev.mysql.com/downloads/mysql/" target="_blank" rel="noopener">MySQL Community Server</a></p></li>
+			<li><p><a href="https://www.w3schools.com/MySQL/default.asp" target="_blank" rel="noopener"> Learn MySQL, w3schools</a></p></li>
+			<li><p>O'Reilly Learning. <a href="https://learning.oreilly.com/library/view/sql-queries-for/9780134858432/" target="_blank" rel="noopener">SQL Queries for Mere Mortals: A Hands-On Guide to Data Manipulation in SQL, 4th Edition</a><li>
+			<li><p>O'Reilly Learning. <a href="https://learning.oreilly.com/library/view/mysql-stored-procedure/0596100892/" target="_blank" rel="noopener"> MySQL Stored Procedure Programming.</a><br>
+			<span class="peque">Puedes entrar a la librería O'Reilly con tu cuenta de gmail de la UOC.</span></p>
+					</li>
+			<li><p><a href="https://dev.mysql.com/doc/refman/8.0/en/" target="_blank" rel="noopener"> MySQL 8.0 Reference Manual</a></li>
+		</ul>
+
+		<h2>Criterios de evaluación <em>&#10004;</em></h2>
+		<ul>
+			<li>La puntuación máxima del producto es un 12.</li>
+			<li>La puntuación mínima para superarlo es de 6 sobre 12.</li>
+		</ul>
+
+		<h2>Indicaciones para la entrega de la actividad <b>↪</b></h2>
+		<p>Para la entrega de la actividad deberás:</p>
+
+		<ul>
+			<li>Hacerlo por el canal indicado en el aula virtual.</li>
+			<li>Formato: Cada grupo hará <b>una sola entrega</b> en formato .pdf</li>
+			<li>Nombre del archivo: <b>BBDD_Producto[n]_Grupo[num].pdf</b></b></li>
+		</ul>
+	</div>
+
+</body>
+
+</html>

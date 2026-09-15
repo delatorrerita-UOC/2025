@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin-left: 5em;
+      margin-right: 5em;
+      font-family: Nunito, Helvetica, sans-serif;
+    }
+
+    summary {
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+
+    .rojo {
+      color: #e03e2d;
+    }
+    button, h2 {
+      font-size: 1.3em;
+    }
+    
+  </style>
+  <title>chinook-bbdd. Conexión AWS</title>
+</head>
+
+<body>
+    <h1>CONEXIÓN CON AWS</h1>
+    <h2>
+      <button onclick="retroceder()"> Retroceder </button>
+      &nbsp; GRUPO <span id="NUMGRUPO"></span> &nbsp;
+      <button onclick="avanzar()"> Avanzar </button>
+    </h2>
+    <hr>
+    <p>Hola <b><span id="GRUPO">gente</span></b>:</p>
+    <p>Se os ha preparado un EndPoint en la nube para que puedan trabajar con una base de datos MySQL compartida en Amazon Web Services.</p>
+    <p>Para realizar la conexión con la Base de Datos, deberéis tener instalado el MySQL Workbench (ver anuncio: <b>Preparación del Entorno de Trabajo</b> ).</p>
+
+    <h3>Iniciar la aplicación MySQL Workbench en vuestro equipo.</h3>
+    <p>En el cuadro de diálogo <b>Setup New Connection</b> escribir las credenciales siguientes:</p>
+    <ul type="circle">
+      <li>Connection Name:<b> <span id="NOM_GRUPO"></span></b></li>
+      <li>Hostname:<b> icx0p32.cu5so1xdpnd5.eu-west-1.rds.amazonaws.com</b></li>
+      <li>Port:<b> 3306</b></li>
+      <li>Username:<b> <span id="USERNAME"></span></b></li>
+      <li>Password:<b> <span id="PASSWORD"></span></b></li>
+      <li>Default Schema:<b> <span id="SCHEMA"></span></b></li>
+    </ul>
+    <p>Hacer clic en <b>Test conection</b> para probar si todos los parámetros están configurados correctamente.</p>
+    <p>Hacer clic en Ok para guardar la conexión.</p>
+
+    <h3>Para conectarse:</h3>
+    <ul type="circle">
+    <li>En la lista de conexiones de MySQL, hacer clic en el icono que corresponde a la conexión y esperar a que se establezca la conexión.</li>
+    </ul>
+    <p>Se abrirá una nueva pestaña SQL con un editor en blanco en el que podréis escribir las consultas.</p>
+
+    <p>Un saludo cordial,</p>
+    <h2>🙋🏽‍♀️</h2>
+    <p>
+      <b>Rita de la Torre</b><br>
+      Consultora DAM/DAW/ASIR<br>
+      <a href="mailto:delatorrerita@uoc.edu">delatorrerita@uoc.edu</a>
+    </p>
+    <hr>
+    
+  <script>
+    // Este semestre tienen 
+    const USER_NAME = 'fp_439_25_2_';
+    const BBDD = 'fp_439_25_2_';
+    const PWD = 'uoc_je_2025_2_';
+
+    const grupos = [
+      { numGrupo: 0, nomGrupo: 'Franklin'},
+      { numGrupo: 1, nomGrupo: 'TableTitans'},
+      { numGrupo: 2, nomGrupo: 'BD_JEMAVIME'},
+      { numGrupo: 3, nomGrupo: '4NF_NORMALIZED'},
+      { numGrupo: 4, nomGrupo: 'SchemaMasters'},
+      { numGrupo: 5, nomGrupo: 'SQLegends'},
+      { numGrupo: 6, nomGrupo: 'BackendBoys'},
+      { numGrupo: 7, nomGrupo: 'EntreLlaves'},
+      { numGrupo: 8, nomGrupo: 'CommitReza'},
+      { numGrupo: 9, nomGrupo: 'Nexus'},
+      { numGrupo: 10, nomGrupo: 'DataBuilders'},
+      { numGrupo: 11, nomGrupo: 'DATAFORGE'},
+      { numGrupo: 12, nomGrupo: 'DataBuilders'},
+      { numGrupo: 13, nomGrupo: 'QuerySquad'},
+      { numGrupo: 14, nomGrupo: 'PrimaryKeys'},
+      { numGrupo: 15, nomGrupo: 'TechNetSolutions'},
+      { numGrupo: 16, nomGrupo: 'JRESolutions'},
+      { numGrupo: 17, nomGrupo: 'SelectTeam17'},
+      { numGrupo: 18, nomGrupo: 'DPBD'},
+      { numGrupo: 19, nomGrupo: 'Idival'},
+      { numGrupo: 20, nomGrupo: 'CUATROBYTES'},
+      { numGrupo: 21, nomGrupo: 'N/A'},
+      { numGrupo: 22, nomGrupo: 'DataNexus26'},
+      { numGrupo: 23, nomGrupo: 'Rezagados'},
+      { numGrupo: 24, nomGrupo: 'Innovación24'},
+      { numGrupo: 25, nomGrupo: 'DiosesDelOlimpo'},
+    ]
+    
+    let pos=1;
+    
+    const cambiar=()=> {
+      document.getElementById('NUMGRUPO').textContent = pos;
+      document.getElementById('GRUPO').textContent = grupos[pos].nomGrupo;
+      document.getElementById('NOM_GRUPO').textContent = grupos[pos].nomGrupo;
+      document.getElementById('USERNAME').textContent = USER_NAME + pos;
+      document.getElementById('PASSWORD').textContent = PWD + pos;
+      document.getElementById('SCHEMA').textContent = BBDD + pos; 
+    }
+
+    window.onload = () => { cambiar() };
+
+    const avanzar = () => {
+      pos++;
+      if (pos>25) pos = 1;
+      cambiar();
+    }
+
+    const retroceder = () => {
+      pos--;
+      if (pos<1) pos = 25;
+      cambiar();
+    }
+
+  </script>
+  
+</body>
+
+</html>

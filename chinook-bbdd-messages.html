@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin-left: 5em;
+      margin-right: 5em;
+      font-family: Nunito, Helvetica, sans-serif;
+    }
+
+    summary {
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+
+    .rojo {
+      color: #e03e2d;
+    }
+  </style>
+  <title>chinook-bbdd. Mensajes</title>
+</head>
+
+<body>
+  <p>Un saludo cordial,</p>
+  <h2>🙋🏽‍♀️</h2>
+  <p>
+    <b>Rita de la Torre</b><br>
+    Consultora DAM/DAW/ASIR<br>
+    <a href="mailto:delatorrerita@uoc.edu">delatorrerita@uoc.edu</a>
+  </p>
+  <details><summary>BIENVENIDOS</summary>
+    <p>Hola gente:</p>
+
+    <p>Bienvenidos al proyecto: <b>Diseño y programación de Bases de Datos.</b></p>
+
+    <p>Os escribe <b>Rita de la Torre</b> (delatorrerita@uoc.edu), la consultora que os acompañará durante el curso en la consecución de los cinco proyectos de esta asignatura. Desde hoy me pongo a vuestra disposición para cualquier duda podáis tener.</p>
+
+    <p>En este proyecto, trabajaremos con la Base de Datos <b>Chinook</b>, una Base de Datos ficticia que simula una tienda de música digital. El proyecto se compone de un conjunto de cinco productos que iremos desarrollando a lo largo del curso. Su objetivo final, es que adquieran un conocimiento bastante amplio del Lenguaje SQL.</p>
+      
+    <p>En el primer producto, modificaremos la Base de Datos y le agregaremos restricciones y disparadores (triggers). Posteriormente, en el resto de los productos, trabajaremos con consultas avanzadas, roles, optimización, funciones, procedimientos almacenados y eventos.</p>
+
+    <p>La dinámica del curso será la siguiente:</p>
+
+    <ul type="circle">
+      <li>Formaréis grupos idealmente de 4 integrantes.</li>
+      <li>El proyecto <b>se evalúa en un 60% de forma GRUPAL</b> (los productos), y <b>40% de forma INDIVIDUAL</b> (test de selección simple que se realizan al final de cada producto.)</li>
+      <li><b>Los mensajes e indicaciones que iré colocando en el Tablón de Anuncios</b> sustituyen, en parte, a las indicaciones y orientaciones que un profesor presencial pueda dar. Por lo tanto deberéis estar pendientes de leerlos al entrar al aula.</li>
+      <li><b>Las rúbricas</b> constituyen una guía importante para saber cómo se realizará la calificación de las actividades y productos. Leerlas <b>con atención</b> os permite revisar si falta algún punto por realizar correctamente.</p>
+      </li>
+    </ul>
+
+    <p>Para comenzar, entraréis en el <b>Foro Presentación Personal</b>.<br>
+    En el mismo os presentaréis, indicando el ciclo que cursáis, vuestros intereses y compartiréis con el resto de compañeros/as vuestra disponibilidad horaria y las inquietudes respecto al presente proyecto.</p>
+
+    <p>Adicionalmente encontraréis un foro denominado <b>Dudas en relación al proyecto</b>, para que expongáis las dudas que tengáis una vez que hayáis leído el Plan Docente.</p>
+
+    <p>De momento nada más, solo recordaros que estoy a vuestra disposición, y que podéis dirigiros a mi e-mail para las dudas que podáis tener. Al hacerlo, por favor identificaros con el nombre de grupo.</p>
+
+    <p>Estoy segura de que disfrutaréis de este Proyecto.</p>
+  </details>
+  <hr>
+  <details><summary>[Fase 1] Formación de Grupos</summary>
+    <p>Hola gente:</p>
+    <p>Recordemos que la fecha prevista para tener todos los grupos formados y comenzar los acuerdos grupales (mirad el calendario).</p>
+
+    <p>Podéis utilizar el foro de <b>Formación de Grupos</b> y una vez consensuado el grupo de trabajo, podéis inscribiros desde la sección <b>Personas - Grupos - Project Groups.</b>
+    </p>
+
+    <p>Una vez se hayan formado todos los grupos, procederé a informar al departamento técnico para que cree los espacios en la nube donde alojaréis vuestro proyecto en MySQL.</p>
+  </details>
+  <hr>
+  <details><summary>[Fase 1]. Preparación del Entorno de Trabajo</summary>
+    <p>Hola gente:</p>
+    <p>Tal y como hab&eacute;is visto en el Plan Docente, el Proyecto P3 se trata de desarrollar un Base de Datos completa utilizando el motor de Bases de Datos MySQL, en conjunto con la herramienta MySQL Workbench.</p>
+    <p>Es por ello, que os pido que antes de hacer nada, instal&eacute;is tanto el MySQL como el Workbench y lo prob&eacute;is en vuestros ordenadores.</p>
+    <p>Para ello os dejo los siguientes v&iacute;nculos:</p>
+    <p>Instalar el Motor MySQL y MySQL Workbench</p>
+    <p><a href="https://www.youtube.com/watch?v=9SFAjDC4Ies">https://www.youtube.com/watch?v=9SFAjDC4Ies</a></p>
+    <p>Probar conexi&oacute;n del Workbench con MySQL y posibles errores...</p>
+    <p><a href="https://www.youtube.com/watch?v=DT5WWyd6OF0">https://www.youtube.com/watch?v=DT5WWyd6OF0</a></p>
+    <p>Crear una Base de Datos desde la consola de MySLQ y desde MySQL Worbench</p>
+    <p><a href="https://www.youtube.com/watch?v=71psKUwSKf8">https://www.youtube.com/watch?v=71psKUwSKf8</a></p>
+    <p>(MySQL Workbench minuto 7:08)</p>
+    <p>A pesar de que el 75% de los productos se har&aacute;n en una Base de Datos compartida en Amazon Web Services (AWS), <br /><span class="rojo"><strong>partes del producto 4 se har&aacute;n en una Base de Datos </span style="text-decoration: underline;">Local</span></strong></span>.&nbsp;<br />La idea es que aprend&aacute;is a mover una Base de Datos de un entorno a otro.</p>
+    <p>Para ello, al final de cada producto, se os pedir&aacute; la exportaci&oacute;n del archivo .sql de vuestra Base de Datos, el cual adem&aacute;s, me permitir&aacute; revisar vuestro trabajo.</p>
+    <p>Por lo tanto, mientras se realiza la formaci&oacute;n de los grupos de trabajo, os pedir&eacute; que <strong><span class="rojo">instal&eacute;is y prob&eacute;is</span></strong> el software necesario <strong>EN LOCAL&nbsp;</strong>
+    </p>
+    <p>Os dejo otro v&iacute;nculo, con un playlist que tiene una serie completa de temas que podr&aacute;n complementar los recursos del Aula. En particular, el video #27 explica c&oacute;mo exportar e importar Bases de Datos tanto desde la consola del MySQL como directamente del MySQL Workbench.</p>
+    <p><a
+        href="https://www.youtube.com/playlist?list=PLCTD_CpMeEKQmH9cRKWWHahygZFtIdwYG">https://www.youtube.com/playlist?list=PLCTD_CpMeEKQmH9cRKWWHahygZFtIdwYG</a>
+    </p>
+    <p>Una vez que prob&eacute;is que todo funciona bien en local, y mientras se van conformando los grupos de trabajo, publicar&eacute; un mensaje con la forma de acceder a la Base de Datos del Grupo.</p>
+  </details>
+  <hr>
+  <details><summary>[Fase 1] Acuerdos Grupales</summary>
+    <p>Hola gente:</p>
+    <p>La actividad final prevista para la Fase 1, es la Elaboración de los acuerdos grupales.</p>
+    <p>Los presentaréis en formato .pdf y posteriormente deberéis incluirlos en el Google Site.</p>
+
+    <p>Cada grupo sólo tiene que compartir un único documento y sentirse libre para redactar sus acuerdos, de modo que sean realistas y útiles para el grupo.
+    Un elemento básico para el buen funcionamiento del grupo está en el planteamiento (y compromiso, consiguiente) de unos buenos acuerdos de funcionamiento.</p>
+
+    <p>De todos modos, los acuerdos grupales no son estáticos, y siempre se pueden redefinir en próximas fases. Si esto sucede, deberéis incluir la modificación en el Site.</p>
+
+    <p>A continuación os menciono las partes que debería tener un documento de ACUERDOS GRUPALES:</p>
+    <ul type="circle">
+      <li>Número del grupo</li>
+      <li>Nombre del grupo</li>
+      <li>Nombres y apellidos de los integrantes del grupo</li>
+      <p>ACUERDOS A LOS QUE EL GRUPO HA LLEGADO DE FORMA CONSENSUADA</p>
+
+      <li>Roles de los diferentes miembros del grupo (por actividad y presentación final) Deben ser rotativos de manera
+        que cada persona del equipo trabaje en diferentes roles.</li>
+      <li>Establecer un sistema de cómo repartir el trabajo. Aunque en un trabajo en equipo todos debemos implicarnos en
+        el producto final que se presente como grupo.</li>
+      <li>Establecer cómo llegar a acuerdos: por unanimidad, por mayoría, ¿qué hacer si transcurren por ejemplo varios
+        días sin respuesta?...</li>
+      <li>Tiempo mínimo para comunicarse con el grupo (en días)</li>
+      <li>Compromiso de obligatoriedad de responder mensajes: de inmediato, después de su lectura, como acuse de
+        recibo,... máximo 2 días después de leído.</li>
+      <li>Compromiso de obligatoriedad de comunicar ausencias (viajes, enfermedades, imprevistos): de inmediato (se
+        requiere sólo 3 minutos para hacer un mensaje al foro del grupo)</li>
+      <li>Ausencia mínima: en días, la superación de la cual implicará el envío de un mensaje personal al compañero
+        ausente.</li>
+      <li>Ausencia mínima superada de no contestación a la misiva anterior en días, que conllevará comunicar esta
+        ausencia en las minutas que se adjuntan en el Google Site.</li>
+      <li>Anexo al documento, las disponibilidades individuales de cada componente del grupo, que incluya el tiempo que
+        dedicará al proyecto, la periodicidad en cuanto a la conexión,...</li>
+      <li>¿Qué software se utilizará? (herramientas de comunicación síncrona y asíncrona)</li>
+      <li>Qué rol será el responsable de redactar la minuta (resumen) de cada reunión.</li>
+      <li>Otros acuerdos</li>
+    </ul>
+    <p>Respecto de las herramientas de trabajo (síncronas o asíncronas) que se utilicen, <mark>no se debe invitar al consultor</mark>. Las reuniones del grupo deberán ser reflejadas en minutas que se iran agregando al Google Site a medida que se vayan haciendo.</p>
+
+  </details>
+  <hr>
+  <details><summary>[Fase 2] Inicio de la creación de la memoria digital</summary>
+    <p>Hola gente:
+
+    <p>Una vez realizados los acuerdos grupales, procederemos, como paso siguiente, a iniciar la creación de la memoria digital, la cual se estructurará en Google Site.</p>
+
+    <p>Por tanto, el <b>objetivo</b> de este site grupal, es <b>que os sirva como memoria digital del proyecto.</b></p>
+
+    <p>¿Qué debería tener este site?</p>
+    <ul type="circle">
+      <li>Una página que reservaréis para la presentación del proyecto que se realizará en la Fase 4.</li>
+      <li>La identificación del grupo de trabajo (al cual deberéis dar un nombre)</li>
+      <li>Vínculo al documento de Acuerdos Grupales (preferiblemente en .pdf).</li>
+      <li>Vínculo a una página de presentación de cada integrante del grupo (como autores del proyecto que sois)</li>
+      <li>Explicación de las herramientas que utilizaréis para la gestión del proyecto y el objetivo de cada una (Slack, Trello, etc.)</li>
+      <li>Un página para cada producto del proyecto (1 al 5) inicialmente vacío, donde se incluirá cómo han sido realizados cada uno de ellos. Se deberá incluir tanto la explicación como el código SQL.</li>
+      <li>Una página de referencias donde se incluirán las Búsquedas Compartidas, o enlaces a los recursos (webs, videos y libros de consulta que os faciliten el desarrollo de los productos en si). </li>
+      <li>Minutas de las reuniones (una por reunión). Adjunto modelo.</li>
+    </ul>
+
+    <p>Cómo veis, el desarrollo de este site será dinámico, es decir, diseñareis su estructura, y a medida que vayáis desarrollando cada producto, ireis llenando la sección pertinente.</p>
+
+    <p>Esto aplica igualmente a las <b>referencias</b>. La idea es ir colocando allí, todos aquellos recursos que os permitan completar el desarrollo del proyecto.</p>
+
+    <p>Durante la segunda fase, tendré una videoconferencia con cada uno de los grupos, para verificar si cada grupo tiene claro los objetivos del proyecto en si y donde se revisará que la estructura del Google Site sea la correcta.</p>
+
+    <p>Comenzamos!</p>
+  </details>
+  <hr>
+  <details><summary>[Fase 2] Conexión con vuestro espacio de trabajo</summary>
+    <p>Hola gente:</p>
+    <p>Se os ha preparado un EndPoint en la nube para que puedan trabajar con una base de datos MySQL <b>compartida</b> en Amazon Web Services.</p>
+    <p>Para realizar la conexión con la Base de Datos, deberéis tener instalado el MySQL Workbench.</p>
+    <table style="width:90%; text-align: center; background-color: aliceblue; padding: 1em;"><tr><td>
+    <p>Iré pasando a cada grupo consolidado, sus credenciales, mediante un anuncio al cual podéis acceder visitando la <b>Página de Inicio de Grupo</b>.</p>
+    <p>Para entrar a la página de vuestro grupo, utilizar el menú que se encuentra en los tres puntos, a la derecha de vuestro nombre de grupo.</p>
+    </td></tr></table>
+    <p>El hosting de AWS es case-sensitive (al igual que algunos otros hosting, por lo tanto <mark>vuestra primera tarea será editar los nombres de campos en las tablas que se usarán para el proyecto y dejar todos los nombres estandarizados antes de proceder a importar la Base de Datos y  comenzar el producto uno.</mark> Para realizar ésta tarea, podéis abrir los archivos en VSCode u otro editor de código. Las <b>Tablas para la Base de Datos Chinook</b> se encuentran en <b>Contenidos, sección Fase 3. Desarrollo</b>  </p> 
+    <p>El uso de <b>snake_case en minúsculas</b> es considerado la mejor práctica estándar para nombrar objetos en bases de datos (tablas, columnas, índices, etc.) en la mayoría de los sistemas relacionales. Esta convención consiste en separar las palabras mediante guiones bajos (_) y utilizar minúsculas para todos los caracteres.</p>
+    <p>A pesar de que muchos motores de Bases de Datos tratan los nombres  como minúsculas automáticamente o no distinguen entre mayúsculas y minúsculas, otros sí que dan problemas, con lo cual es importante respetar el estándar.</p>
+    <h3>Mejores prácticas para evitar errores de <i>naming</i> al migrar una BBDD</h3>
+    <ul>
+    <li><b>Tablas (Plural):</b> Usar sustantivos en plural para las tablas (ej: users, customer_orders).</li>
+    <li><b>Columnas (Singular):</b> Use sustantivos en singular para las columnas (ej: first_name, user_id).</li>
+    <li><b>Caracteres:</b> Tanto en los nombres de tabla como los de las columnas, utilizar solo minúsculas (a-z), números (0-9) y guiones bajos (_).</li>
+    <li><b>Evitar palabras reservadas:</b> No utilizar nombres que sean palabras clave de SQL (ej: order, select).</li>
+    </ul>
+    <p>Utilizar las mejores prácticas descritas anteriormente, además de evitar errores al migrar otorga <b>legibilidad en las consultas</b> al ofrecer un contraste visual claro con las palabras clave de SQL (que se suelen escribir en MAYÚSCULAS) y <b>compatibilidad</b> al ser la convención más compatible entre sistemas operativos y ORMs (Object-Relational Mappers).</p>
+    <p><b>Recomendación:</b> Probar y revisar en <b>local</b> (<span style="color:#e03e2d"> material en anuncio <b>[Fase 1]. Preparación del Entorno de Trabajo</b></span> ) la importación de las tablas, antes de pasarlas a la Base de Datos compartida. </p>
+    <p>Es deseable que realicen ésta actividad <b>antes</b> de las videoconferencias para poder resolver cualquier duda que se presente.</p>
+    <p>Para ejecutar los script SQL (.sql) corregidos que contienen las tablas de la BBDD en MySQL Workbench, deberéis conéctaros a la base de datos (local o AWS) e ir a <code>File > Open SQL Script...</code> para ir seleccionando los archivos. Luego, hacer clic en el icono del rayo (<code>Execute</code>) en la barra de herramientas para importar la tabla pertinente. La BBDD de AWS ya tiene un nombre (que no podéis cambiar), <i>en el caso del servidor local</i>, deberéis crear una BBDD para poder realizar la importación de las tablas en la misma.</p>
+  </details>
+  <hr>
+  <details><summary>[Fase 2] Videoconferencias Iniciales</summary>
+    <p>Hola gente:</p>
+
+    <p> A partir del lunes 2 de marzo y hasta el domingo 8, está previsto realizar las video conferencias con cada uno de los grupos.</p>
+    <p>Tal y como se especifica en el enunciado de la fase 2, un miembro del grupo (no el consultor) será el encargado de organizar las videoconferencias , invitando al consultor y al resto de miembros del grupo en la fecha y hora estipulada.</p>
+    <p>Os dejo un enlace donde podéis ver las horas libres como mi calendario con las horas reservadas por el resto de
+      equipos, así como la forma correcta de organizarla, de tal forma que quede guardada en mi calendario y no haya
+      malos entendidos. (Para poder apreciar el calendario, deberéis estar conectados con un correo de la UOC)</p>
+    <a target="_blank" rel="noopener"
+      href="https://delatorrerita-uoc.github.io/faqs/vc.html">https://delatorrerita-uoc.github.io/faqs/vc.html</a></p>
+
+    <p>Asimismo, en la videoconferencia, cada grupo podrá exponer sus dudas sobre el proyecto. <b>Lo ideal es que ya tengan hecha la estructura del <i>Google Site</i> y configuradas las conexiones en local y a AWS en Workbench</b></p> 
+    <h3 style="text-align: center;">La videoconferencia será de unos <mark>20 minutos aproximadamente</mark>.</h3>
+  </details>
+  <hr>
+  <details><summary>[Fase 2] Parámetros de análisis y requisitos.</summary>
+    <p>Hola gente:</p>
+    <p>Para finalizar con la fase 2 y mientras se van llevando a cabo los debates internos en cada grupo, he abierto un
+      tema en los <b>Foros de discusión: Parámetros de análisis y requisitos.</b></p>
+    <p>Ahora que ya habéis formado un grupo de trabajo, se trata de reflexionar conjuntamente sobre distintas cuestiones
+      desde el punto de vista de los diferentes roles en el proyecto. Un vocero del Grupo se encargará de colocar en el
+      Foro, las conclusiones del grupo.</p>
+  </details>
+  <hr>
+  <details><summary>Datos de Acceso AWS desde Workbench</summary>
+    <h3><a href="chinook-bbdd-conexion.html"> Datos de Acceso AWS desde Workbench</a></h3>
+  </details>
+  <hr>
+  <details><summary>[Fase 3] P1. Creación y Modificación de la Base de Datos</summary>
+    <p>Hola gente:</p>
+
+    <p>Una vez realizadas la videoconferencias iniciales y finalizada la Fase 2, entraremos de lleno en la elaboración de los productos de la Fase 3. Recordaros de leer bien el enunciado y las rúbricas.</p>
+
+    <p>Utilizaréis la Base de Datos que se os ha asignado como equipo en vuestro espacio de trabajo.</p>
+
+    <p>El nombre de la Base de Datos es el que tienen en la opción <b>Default Schema</b> de la conexión con AWS. <mark>No lo podéis borrar ni cambiar</mark>.</p>
+
+    <p>Si lo borráis os quedáis sin Base de Datos, lo cual hace que yo deba iniciar un trámite para que os la restauren desde AWS.</p>
+
+    <p>Es por ello que en el Producto 1 se os pide como primer paso (SIC)</p>
+
+    <blockquote>
+      <p>Importar las tablas de la Base de Datos Chinook
+        al servidor de Base de Datos, <br>utilizando el Schema asignado al grupo.<br>
+    </blockquote>
+
+  </details>
+</body>
+
+</html>

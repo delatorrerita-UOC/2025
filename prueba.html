@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    li.titulo {
+      list-style-type: none;
+      font-weight: bold;
+      margin-top: 1em;
+    }
+
+    ol.custom {
+      counter-reset: item;
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ol.custom li { margin: 0.5em 0;}
+
+    ol.custom li.item::before {
+      counter-increment: item;
+      content: counter(item) ". ";
+      font-weight: bold;
+    }
+
+    ol.custom li.titulo {font-weight: bold;margin-top: 1em;}
+  </style> 
+</head>
+
+<body>
+  <ol>
+    <li>
+      <h4>Resolver con Combinaciones Externas</h4>
+      <ul>
+        <li>...</li>
+        <li>...</li>
+        <li>...</li>
+      </ul>
+    </li>
+    <li>
+      <h4>Resolver con Subconsultas</h4>
+      <ol>
+        <li>...</li>
+        <li>...</li>
+        <li>...</li>
+      </ol>
+    </li>
+  </ol>
+  <hr>
+  <ol>
+    <li><strong>Resolver con Combinaciones Externas</strong></li>
+    <li>...</li>
+    <li>...</li>
+    <li><strong>Resolver con Subconsultas</strong></li>
+    <li>...</li>
+    <li>...</li>
+  </ol>
+  <hr>
+  <ol>
+    <li class="titulo">Resolver con Combinaciones Externas</li>
+    <li>Consulta con JOIN</li>
+    <li>Consulta con UNION</li>
+    <li class="titulo">Resolver con Subconsultas</li>
+    <li>Subconsulta en SELECT</li>
+    <li>Subconsulta en WHERE</li>
+  </ol>
+  <hr>
+  <ol class="custom">
+    <li class="titulo">Resolver con Combinaciones Externas</li>
+    <li class="item">Consulta con JOIN</li>
+    <li class="item">Consulta con UNION</li>
+    <li class="titulo">Resolver con Subconsultas</li>
+    <li class="item">Subconsulta en SELECT</li>
+    <li class="item">Subconsulta en WHERE</li>
+  </ol>
+</body>
+
+</html>

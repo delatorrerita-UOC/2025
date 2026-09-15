@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin-left: 5em;
+      margin-right: 5em;
+      font-family: Nunito, Helvetica, sans-serif;
+    }
+
+    summary {
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+
+    .rojo {
+      color: #e03e2d;
+    }
+
+    button,
+    h2 {
+      font-size: 1.3em;
+    }
+
+    .check {
+      font-size: 2em;
+    }
+  </style>
+  <title>chinook-bbdd. Conexión AWS</title>
+</head>
+
+<body>
+  <h1>[Fase 3] P1. Creación y Modificación de la Base de Datos</h1>
+  <p>Hola gente:</p>
+
+  <p>Una vez realizadas la videoconferencias iniciales y finalizada la fase 2, entraremos de lleno en la elaboración de los <b>productos de la Fase 3</b>. Recordad leer bien el enunciado y las rúbricas.</p>
+
+  <p>Os he preparado una pequeña guía para facilitaros la resolución del producto 1:</p>
+
+  <h2>1. El Orden de Ejecución es clave</h2>
+
+  <p>Antes de tocar el código, debéis entender que las bases de datos tienen jerarquías. Si intentáis borrar una columna
+    que es necesaria para otra tabla, el sistema os dará error.</p>
+  <ul type="circle">
+    <li>Buscad la diferencia entre <code>DROP</code>, <code>ALTER</code> y <code>TRUNCATE</code>. No son lo mismo y
+      usarlos mal puede borrar datos irreproducibles.</li>
+    <li>Realizad siempre un "script de limpieza" que permita borrar lo creado y empezar de cero si algo sale mal.</li>
+  </ul>
+  <h2>2. La tabla <code>address</code></h2>
+
+  <p>La tabla <code>address</code> es el punto más complejo del proyecto. No se trata solo de crear una tabla, sino de
+    <b>mover datos entre tablas sin perderlos</b>.</p>
+
+  <ol>
+    <li>Cread la tabla <code>address</code>.</li>
+    <li>Investigad la sentencia <code>INSERT INTO ... SELECT</code>. ¿Cómo podéis aseguraros de que no se inserten
+      direcciones duplicadas? (Pista: cláusula <code>DISTINCT</code>).</li>
+    <li>Antes de borrar las columnas viejas en <code>customers</code> o <code>employees</code>, debéis crear una columna
+      <code>id_address</code> en ellas y "vincularlas" con la nueva tabla.</li>
+    <li>¿Cómo se actualiza una tabla basada en los datos de otra? Buscad: <b>"MySQL UPDATE JOIN syntax"</b>.</li>
+  </ol>
+
+  <h2>3. En referencia a las restricciones</h2>
+
+  <p>Las restricciones (<code>constraints</code>) constituyen las reglas del juego de una Base de Datos. Hablemos de
+    algunas de ellas:</p>
+
+  <ul type="circle">
+    <li><b>Restricción UNIQUE:</b> ⚠️ <span class="rojo">Cuidado</span>. Si intentáis poner <code>UNIQUE</code> en una
+      columna que ya tiene datos repetidos, MySQL fallará. Primero debéis limpiar los datos.</li>
+    <li><b>Relaciones:</b> Al definir las <code>foreign keys</code>, pensad en el negocio: <i>Si borro a un empleado,
+        ¿debo borrar todas sus ventas pasadas (<code>CASCADE</code>) o simplemente dejar el registro sin vendedor
+        asignado (<code>SET NULL</code>)?</i><br>Justificad este tipo de decisiones en vuestra entrega.</li>
+  </ul>
+
+  <h2>4. Lógica de Triggers (Disparadores)</h2>
+
+  <p>Los triggers son como 👮🏽‍♂️ <i>policías 24/7</i> que vigilan la tabla para la cual han sido creados.</p>
+
+  <p>A tomar en cuenta:</p>
+
+  <ul type="circle">
+
+    <li><code>NEW</code> vs <code>OLD</code>: Para validar un <code>INSERT</code>, usad
+      <code>NEW.nombre-de-campo</code>. Para un <code>UPDATE</code>, podéis comparar <code>OLD</code> (lo que había) con
+      <code>NEW</code> (lo que se quiere actualizar).</li>
+    <li><b>Validaciones Complejas</b>: Para programar la lógica de validación de emails investigad el uso de
+      <b>Expresiones Regulares (<code>REGEXP</code>)</b> en MySQL. Es la forma profesional de validar formatos de texto.
+    </li>
+    <li><b>Detener una operación</b>: Un trigger no se utiliza para avisar, debería <b>detener</b> una operación
+      incorrecta. Buscad cómo usar <code>SIGNAL SQLSTATE</code> para lanzar un error personalizado que impida que un
+      dato inválido entre en la base de datos.</li>
+  </ul>
+
+  <h2>5. Trabajo en Equipo</h2>
+
+  <p>Al ser un curso asíncrono, la <b>Sección A (Teoría)</b> es vuestro espacio de debate. No os la saltéis 🙏🏽. Discutir qué hace cada instrucción o cláusula, os ahorrará horas de errores en la parte práctica.</p>
+
+  <h2>6. Pruebas (Ejemplos)</h2>
+
+  <table style="width:90%; text-align: center; background-color: aliceblue; padding: 1em;">
+    <tr>
+      <td>
+        <p>En SQL, que un script se ejecute sin errores de color rojo no significa que el trabajo esté bien hecho;
+          significa que la sintaxis es correcta. La verdadera calidad está en que los datos resultantes sean coherentes.
+        </p>
+      </td>
+    </tr>
+  </table>
+  <p>Antes de generar el PDF final, realizad las siguientes pruebas en vuestro entorno de AWS. Si el sistema os permite
+    hacer algo "prohibido", significa que vuestra restricción o trigger tiene un fallo de lógica.</p>
+
+  <h3>A. Prueba de Integridad de Datos (CHECK)</h3>
+
+  <p>Intentad insertar un registro que rompa las reglas de negocio:</p>
+
+  <ul type="circle">
+    <li><b>En la tabla <code>invoice_lines</code>:</b> Intentad un realizar un <code>INSERT</code> con
+      <code>quantity = 0</code> o <code>-1</code>.<br>
+      <i>Resultado esperado:</i> El sistema debe dar un error y rechazar la fila.
+    </li>
+    <li><b>En la tabla <code>employees</code></b> Intentad hacer un <code>UPDATE</code> donde el campo
+      <code>hire_date</code> sea el año 1980 y el campo <code>birth_date</code> sea 1990.<br>
+      <i>Resultado esperado</i>: Error de restricción (o el trigger de validación debe saltar).
+    </li>
+  </ul>
+    <h3>B. Pruebas de Seguridad (Triggers de Password)</h3>
+
+    <p>No asumir que el trigger funciona solo porque el código para crearlo se ejecutó sin errores. Probadlo. Ejemplos:
+    </p>
+
+    <ul type="circle">
+      <li><b>Prueba fallida núm. 1</b>: Intentad realizar un <code>UPDATE</code> en <code>customers</code> poniendo
+        <code>pwd = '123'</code>. (Falla por longitud).</li>
+      <li><b>Prueba fallida núm. 2</b>: Intentad ahora <code>pwd = 'Abcdefgh'</code>. (Falla por falta de símbolos o
+        números).</li>
+      <li><b>Prueba Exitosa</b>: Intentad <code>pwd = 'Admin_2024'</code>. (Debería permitirlo).</li>
+    </ul>
+
+    <h3>C. Pruebas de Formato (Triggers de Email)</h3>
+
+    <p>En la tabla <code>employees</code>:</p>
+
+    <ul type="circle">
+    <li>Intentad insertar un email como <code>pepito.perez@com</code> (sin el .es, .com, etc., o mal formado).</li>
+    <li>Intentad insertar pepito#perez@empresa.com.</li>
+    </ul>
+    <p><i>En ambos casos, el trigger debería usar <code>SIGNAL SQLSTATE</code> para detener la operación y mostrar vuestro mensaje personalizado.</i></p>
+
+    <h3>D. Pruebas para los constraints en relaciones (ON DELETE / ON UPDATE)</h3>
+
+    <p>📛 <span style="color: red;"><mark><b>Haced un backup antes</b></mark></span></p>
+    
+    <p>Ejemplo para una Relación:</p>
+
+    <ul type="circle">
+      <li>Intentad borrar un artista que tenga álbumes asociados.
+      <ol>
+      <li>Si usasteis <code>CASCADE</code>: El artista y sus álbumes desaparecerán. ¿Queremos ésto?</li>
+      <li>Si usasteis <code>RESTRICT</code>: MySQL os dará un error impidiendo el borrado. 👍🏽</li>
+      </ol>
+    </ul>
+
+    <h2>Checklist final antes de entregar:</h2>
+
+    <p><span style="font-size: 2em;">□</span> ¿Hemos comentado cada instrucción explicando qué hace?<br>
+      <span style="font-size: 2em;">□</span> ¿El campo <code>subtotal</code> se calcula solo al insertar datos?<br>
+      <span style="font-size: 2em;">□</span> ¿Hemos verificado que los disparadores realmente bloquean correos mal
+      formados?<br>
+      <span style="font-size: 2em;">□</span> ¿Hemos generado el diagrama Entidad-Relación actualizado para verificar las
+      relaciones? (Investigad sobre la opción <code>DataBase | Reverse Engineer</code> del Workbench).
+    </p>
+
+
+    <br><br>
+  <p>Cualquier duda, colocadla como respuesta a éste anuncio para que todos puedan beneficiarse del debate.</p>
+
+  <p>Un saludo cordial,</p>
+  <h2>🙋🏽‍♀️</h2>
+  <p>
+    <b>Rita de la Torre</b><br>
+    Consultora DAM/DAW/ASIR<br>
+    <a href="mailto:delatorrerita@uoc.edu">delatorrerita@uoc.edu</a>
+  </p>
+
+</body>
+
+</html>

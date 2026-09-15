@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>chinook-bbdd [P1]</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/enunciado.css">
+</head>
+
+<body>
+<div>
+	<h1>[P1] Modificación de una base de datos. Restricciones y disparadores</h1>
+	<section id="descripcion">
+	<h2>Descripción <b>&#10059;</b></h2>
+		<p>Para el presente proyecto, usaremos la base de datos <strong>Chinook.</strong></p> 
+		<p>La Base de Datos <b>Chinook</b> es una Base de Datos ficticia que simula una tienda de música digital. Se creó como alternativa a la base de datos de ejemplo llamada Northwind que viene con la instalación de motor de base de datos SQL Server. La base de datos puede ser cargada en distintos motores de bases de datos entre los que se encuentran SQL Server, Oracle, SQLite, PostgreSQL, DB2 y por supuesto <b>MySQL</b>.</p>
+		<p>Los datos relacionados con las pistas/tracks se crearon utilizando datos reales de una biblioteca de iTunes. La información de clientes y empleados se creó manualmente utilizando nombres ficticios, direcciones que se pueden ubicar en los mapas de Google y otros datos (teléfono, fax, correo electrónico, etc.). La información de ventas se generó automáticamente utilizando datos aleatorios durante un período de cuatro años.</p>		
+		<p>Es una base de datos que consta de once tablas, las cuales se encuentran referenciadas en el contenido del proyecto, en la Fase 3:</p> 
+		<p>Analizaremos las tablas, crearemos las restricciones así como algunos campos  e implementaremos algunos disparadores los cuales nos permitirán mejorar su funcionalidad.</p>
+	</section>
+	<section id="objetivos">
+	<h2>Objetivos <b>&#9873;</b></h2>
+		<ul>
+			<li>Ser capaces de analizar una Base de Datos existente generando el modelo entidad&hyphen;relación en Workbench a partir de ingeniería inversa.</li>
+			<li>Modificar la arquitectura inicial de una Base de Datos, optimizando los diferentes tipos de restricciones.</li>
+			<li>Implementar disparadores para complementar las restricciones existentes y generar información histórica y tablas de auditoría.</li>
+		</ul>
+	</section>
+	<section id="pasos">	
+		<h2>Pasos a seguir: <b>&#128099;</b></h2>
+		<p>Los pasos a seguir para llevar a cabo el producto son:</p>		
+		<ol>
+			<li>Leer detenidamente las instrucciones e identificar los requerimientos del mismo.</li>
+			<li>Revisar detenidamente la rúbrica de evaluación.</li>
+			<li>Consultar los recursos necesarios facilitados en el aula.</li>
+			<li>Crear la conexión al servidor en AWS con los datos facilitados por el consultor.</li>
+			<li>Importar en tu servidor de AWS las tablas que componen la Base de Datos.</li>
+			<li>Leer y comprender el caso práctico en el que se basa el proyecto.</li>
+			<li>Discutir con el grupo las preguntas teóricas de la primera parte del producto.</li>
+			<li>Responder las preguntas de la parte práctica del producto.</li>
+		</ol>
+	</section>
+	<section id="caso">
+			<h3>Caso práctico (Base de Datos CHINOOK)</h3>
+			<p>La base de datos <strong>Chinook</strong> (que será renombrada con el nombre del esquema asignado a cada grupo) que representa una tienda de música digital, incluye tablas para artistas, álbumes, pistas multimedia, facturas y clientes.</p>
+			<p>Cada una de las once tablas se han guardado en un archivo .sql diferente. En estos archivos se podrá encontrar la sentencia .sql que la genera.</p>
+			<p>En este producto se requiere analizar la estructura de la Base de Datos, y seguidamente crear las claves foráneas, y crearle nuevos campos, restricciones y disparadores.</p>
+	</section>
+	<section id="teoria">				
+		<h3>Sección A. Parte Teórica &#128491; (para discutir en Grupo)</h3>
+		<p>Las cuestiones relativas a la teoría de la Base de Datos no se entregan al consultor. Su propósito es discutirlas en el grupo para realizar las pruebas de Evaluación Teórica al final de cada producto así como las Pruebas de Síntesis.</p>
+		<h4>Claves Foráneas</h4>		
+		<ul type="circle">
+			<li>¿Para qué se utilizan y cuáles son los beneficios de utilizar claves foráneas?</li>
+			<li>Cuando dos tablas se encuentran relacionadas, cualquier acción de actualización o eliminación de las filas de la tabla principal (aquella que contiene la clave primaria) debe reflejarse en consecuencia en la tabla relacionada (la que contiene la clave foránea). La restricción FOREIGN KEY ofrece varias opciones para implementar estas actualizaciones o eliminaciones. Revisar cada una de éstas opciones o cláusulas analizando qué sucedería si la restricción FOREIGN KEY se configura de una manera u otra.</li>
+
+		</ul>
+		<h4>Restricciones</h4>
+		<ul type="circle">
+			<li>Revisar con el grupo la lista de  restricciones que permite MySQL para velar por la integridad de los datos: UNIQUE, CHECK, campos tipo ENUM y SET, UNSIGNED, NOT NULL, DEFAULT. </li>
+			<li>Estudiar el funcionamiento de la <b>restricción CHECK</b>. ¿Cómo se utiliza? ¿Para qué se utiliza la cláusula opcional ENFORCED/NOT ENFORCED?.</li>			
+			<li>¿Cual es la función de los campos tipo ENUM y SET?</li>
+		</ul>
+		<h4>Columnas que generan información automática</h4>
+		<ul type="circle">
+			<li>¿Que es un campo autoincremental y cual es la diferencia con las columnas autogeneradas?</li>	
+			<li>¿Qué son las <b>columnas generadas o autocalculadas</b> en tabla?. ¿Cual es la sintaxis para crearlas?</li>
+		</ul>
+		<h4>Disparadores (Triggers)</h4>
+		<ul type="circle">
+			<li>¿Que es un disparador o trigger y en qué situaciones resultaría útil su implementación?</li>
+			<li>¿Cual es la sintaxis para la creación de un disparador?</li>
+			<li>¿Para qué se utiliza la cláusula DELIMITER y cómo se utiliza?</li>
+			<li>¿Qué significan los prefijos OLD y NEW?</li>				
+			<li>¿Qué eventos desencadenan un disparador? </li>
+			<li>¿Cómo eliminar un disparador de una Base de Datos?</li>
+		</ul>
+	</section>
+	<section id="practica">
+		<h3>Sección B. Parte Práctica <b>&#9874;</b> </h3>
+		<p>Cada una de las sentencias SQL utilizadas para realizar la parte práctica, deberán ser copiadas y pegadas en un archivo que deberá publicarse con el nombre <b>BBDD_Producto[n]_Grupo[num].pdf</b>. Cada instrucción deberá ser pegada, comentada e idealmente se deberá indicar cómo se llegó a resolver la pregunta.</p>	
+		<p>En la base de datos de AWS (nombre del schema asignado al grupo) importar las tablas que se encuentra en los archivos .sql con el mismo nombre. Ejecutar el script de control para verificar que todo se ha importado según lo previsto. Hacer un análisis de la estructura ( <code>DESCRIBE [table]</code> ) y del contenido de las tablas.</p>
+		<p>La base de datos <b>Chinook</b> está parcialmente normalizada, pero no cumple estrictamente con todas las formas normales. La normalización busca reducir la redundancia y mejorar la integridad de los datos. <b>Chinook</b> cumple con algunas, pero tiene áreas que podrían mejorarse. En este producto abordaremos algunas pocas mejoras.</p>
+		<p>Por ejemplo, en la tabla <b>Invoices</b>, es posible que la dirección del envío a un cliente (junto con la ciudad, país y código postal) se repita en cada factura. Adicionalmente, un cliente puede tener una dirección de facturación y varias direcciones de envío. Para evitar redundancia, se pueden mover todos los campos de dirección desde las tablas <b>Customer, Employee</b> e <b>Invoice</b> a una tabla separada de direcciones (<b>Address</b>), teniendo cuidado de que no se repitan y referenciar las direcciones desde las tablas <b>Customer, Employee</b> e <b>Invoice</b>.</p> 
+		<ol>
+			<li>Importar las tablas de la Base de Datos Chinook al servidor de Base de Datos AWS, utilizando el Schema asignado al grupo.</li>
+			<li>Crear una tabla <b>Address</b> para reutilizar direcciones entre empleados, clientes y facturas, agregando un <code>IdAddress</code> (autonumérico) y <code>AddressType</code> (enum) con los valores <var>Customer, Employee, Billing</var>. Sustituir las direcciones pertinentes en las tablas por el <code>IdAddress</code> de la dirección de la tabla <b>Address</b>.<br>
+			Antes de eliminar las columnas de dirección en <b>Customer, Employee e Invoice</b>, lo ideal es migrar esos datos a una tabla temporal, insertando direcciones únicas, que poblarán finalmente la tabla <b>Address</b>, llenando el campo <b>enum</b> que identifica su origen. Esto es importante para no perder datos.</li>			
+			<li>Crear los siguiente campos en la tabla <b>customer</b>: <code>VIP</code> (enum: sí, no; default: no), <code>birthdate</code> (date), <code>username</code> (VARCHAR(12)) y <code>pwd</code> (VARCHAR(12)).</li>
+			<li>Crear los siguientes campos: <code>discount</code> (decimal(5,2)) y <code>SubTotal</code> (decimal(10,2)) en la tabla <b>InvoiceLine</b>; y <code>SameAsCustomer</code> (enum: sí, no) en la tabla <b>Invoice</b></li>
+			<li>Crear una restricción de tipo CHECK al campo <code>Quantity</code> de la tabla <b>invoiceline</b> que controle que no se puedan introducir cantidades menores a 1.</li>
+			<li>Crear una restricción de tipo CHECK al campo <code>HireDate</code> de la tabla <b>employee</b> que controle que el valor del campo <code>HireDate</code>, sea mayor al valor del campo <code>Birthday</code>.</li>
+			<li>Crear una restricción de tipo UNIQUE a los campos <code>ArtistName</code>, <code>GenreName</code>, <code>PlayListName</code> y <code>MediaTypeName</code>. Comentar si habéis podido hacerlo, qué habéis tenido que corregir y qué consecuencia tiene haber colocado estas restricciones.</li>
+			<li>Relacionar las tablas de la Base de Datos tomando en cuenta el modelo adjunto junto con los scripts para importarla. Al crear las claves foráneas, agregar las cláusulas <code>ON UPDATE</code> y <code>ON DELETE</code> pertinentes, justificando con un comentario cada decisión.</li>
+			<li><p>La siguiente instrucción:</p>
+			<p><code>
+				UPDATE <i>mytable</i><br>
+				SET <i>mycolumn</i> = STR_TO_DATE(<br>
+					CONCAT(<br>
+					&nbsp;&nbsp;LPAD(FLOOR(1 + RAND() * 12), 2, '0'), '-',     -- Mes (01–12)<br>
+					&nbsp;&nbsp;LPAD(FLOOR(1 + RAND() * 28), 2, '0'), '-',     -- Día (01–28)<br>
+					&nbsp;&nbsp;FLOOR(1940 + RAND() * (2007 - 1940))           -- Año (1940–2006)<br>
+					),<br>
+					'%m-%d-%Y'<br>
+				);
+			</code></p>
+			<p>permite actualizar un campo fecha de una tabla con fechas aleatorias (en este caso el año de nacimiento estaría en el rango 2007-1940, y los días entre 1 y 28).<br>			
+			La función <code>LPAD</code>, asegura que el mes y día tengan dos dígitos.
+			<p>
+			<p>Actualizar el campo <code>birthdate </code> de la tabla <b>customer</b>.</p></li>
+			<li>Actualizar el campo <code>discount</code> de la tabla <b>invoiceLine</b> utilizando la función <b>rand()</b> de MySQL para que tome valores entre 0% y 10%. Eliminar el campo <code>Subtotal</code> y volverlo a crear como un campo autogenerado que muestre el precio de la línea tomando en cuenta cantidad (<code>Quantity</code>) y el descuento (<code>discount</code>) previamente actualizado.</li>
+			<li>Actualizar (<b>UPDATE</b> ) el campo <code>username</code> de la tabla <b>customer</b> de la siguiente manera: inicial de su nombre en minúsculas + las tres primeras letras de su apellido en minusculas + id de su Representante de Ventas + un guión de subrayado + las dos primeras letras de su país en mayúsculas. (Una sola instrucción debe actualizar toda la tabla)</li>
+			<li>Actualizar el campo <b>pwd</b> con el contenido del campo <b>username</b> previamente actualizado.</li>			
+			<li><p>Crear dos disparadores para que al intentar cambiar un registro de la tabla <b>customer</b> (<code>BEFORE UPDATE</code>) o se intente incluir un nuevo cliente (<code>BEFORE INSERT</code>), revise si  el campo <b>pwd</b> longitud es mayor a 7 caracteres y su contenido  contiene mayúsculas, minúsculas, digitos y alguno de los siguientes símbolos: <b>-_#@.</b> De no ser así, mostrar un mensaje de error (<code>SQLSTATE</code>) y no permitir la operación.</p></li>
+			<li><p>Diseñar dos disparadores que prevenga que el campo <code>email</code> de la tabla <b>employee</b> tenga un formato correcto al actualizar o insertar un nuevo email.</p></li>
+		</ol>
+	</section>
+		
+		<h2>Se requiere <b>&#9776;</b></h2>
+
+		<p>Los requisitos indispensables para realizar el producto son:</p>
+		<ol>
+			<li>Consultar las fuentes de información mencionadas en la <b>FASE 3</b> del Aula Virtual.</li>
+			<li>Disponer de los diferentes archivos .sql con las tablas del proyecto</li>
+			<li>Tener acceso a una Base de Datos en AWS. Los datos de conexión serán facilitados por el consultor.</li>
+		</ol>
+		
+		<h2>Recursos Básicos <b>&#128366; &#128392;</b></h2>
+		<p>Para llevar a cabo el producto puedes apoyarte con los materiales y fuentes de información disponibles a continuación:</p>
+		
+		<ul type="circle">
+			<li><p><a href="https://dev.mysql.com/downloads/mysql/" target="_blank" rel="noopener">MySQL Community Server</a></p></li>
+			<li><p><a class="inline_disabled" href="#"><strong>Scripts SQL</strong></a></p></li>
+			<li><p><a href="https://www.w3schools.com/MySQL/default.asp" target="_blank" rel="noopener"> Learn MySQL, w3schools</a></p></li>
+			<li><p>O'Reilly. <a href="https://learning.oreilly.com/library/view/mysql-workbench-data/9780071791885/" target="_blank" rel="noopener"> MySQL Workbench: Data Modeling & Development</a><br>
+			<span class="peque">Puedes entrar a la librería O'Reilly con tu cuenta de gmail de la UOC.</span></p>
+				</li>
+			<li><p>O'Reilly. <a href="https://learning.oreilly.com/library/view/administracion-practica-de/9781098188641/" target="_blank" rel="noopener"> Administración práctica de MySQL</a><br>
+			<span class="peque">Puedes entrar a la librería O'Reilly con tu cuenta de gmail de la UOC.</span></p>
+			</li>
+			<li><p>O'Reilly. <a href="https://learning.oreilly.com/course/learning-sql/9780134193700/" target="_blank" rel="noopener">Learning SQL. Your complete SQL video course.</a><br>
+			<span class="peque">Puedes entrar a la librería O'Reilly con tu cuenta gmail de la UOC.</span></p></li>
+			<li><p>O'Reilly. <a href="https://learning.oreilly.com/library/view/mysql-r-administrators-bible/9780470416914/pt02.html" target="_blank" rel="noopener"> MySQL Administrator's Bible.</a><br>Cap&iacute;tulos 4 y 7. Stored Routines, Triggers, and Events<br>
+			<span class="peque">Puedes entrar a la librería O'Reilly con tu cuenta de gmail de la UOC.</span></p>
+			</li>
+			<li><p><a href="https://dev.mysql.com/doc/search/?d=201&p=1&q=constraints" target="_blank" rel="noopener"> MySQL 8.0 Reference Manual ... Constraints</a></li>
+		</ul>
+		
+		<h2>Criterios de evaluación <em>&#10004;</em></h2>
+		<ul>
+			<li>La puntuación máxima del producto es un 12.</li>
+			<li>La puntuación mínima para superarlo es de 6 sobre 12.</li>
+		</ul>
+
+		<h2>Indicaciones para la entrega de la actividad <b>↪</b></h2>
+		<p>Para la entrega de la actividad deberás:</p>
+		
+		<ul>
+			<li>Hacerlo por el canal indicado en el aula virtual.</li>
+			<li>Formato: Cada grupo hará <b>una sola entrega</b> en formato .pdf</li>
+			<li>Nombre del archivo: <b>BBDD_Producto[n]_Grupo[num].pdf</b></b></li>
+		</ul>
+	</div>	
+</body>
+</html>
